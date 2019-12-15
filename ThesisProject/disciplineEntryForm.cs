@@ -25,6 +25,11 @@ namespace ThesisProject
 
         private void disciplineEntryForm_Load(object sender, EventArgs e)
         {
+            loadSchoolComboBox();
+        }
+
+        private void loadSchoolComboBox()
+        {
             try
             {
                 connection.OpenConection();
@@ -49,6 +54,28 @@ namespace ThesisProject
 
         private void buttonDisciplineEntry_Click(object sender, EventArgs e)
         {
+
+            if (textBoxDisciplineId.Text == null || textBoxDisciplineId.Text == "")
+            {
+                MessageBox.Show("Invalid Discipline Id");
+                textBoxDisciplineId.Focus();
+                return;
+            }
+
+            if (textBoxDisciplineName.Text == null || textBoxDisciplineName.Text == "")
+            {
+                MessageBox.Show("Invalid Discipline name");
+                textBoxDisciplineName.Focus();
+                return;
+            }
+
+            if (comboBoxSchoolName.Text == null || comboBoxSchoolName.Text == "")
+            {
+                MessageBox.Show("Invalid School name");
+                comboBoxSchoolName.Focus();
+                return;
+            }
+
             connection.OpenConection();
             SqlCommand cmd = connection.CreateCommand();
             cmd.CommandType = CommandType.Text;
@@ -61,6 +88,10 @@ namespace ThesisProject
             cmd.ExecuteNonQuery();
             connection.CloseConnection();
             MessageBox.Show("New Discipline Added");
+
+            disciplineEntryForm def = new disciplineEntryForm();
+            this.Close();
+            def.Show();
         }
 
         private void comboBoxSchoolName_SelectedIndexChanged(object sender, EventArgs e)
