@@ -13,7 +13,9 @@ namespace ThesisProject
 {
     public partial class designationSeniorityForm : Form
     {
-        SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\user\Desktop\ThesisProject\database.mdf;Integrated Security=True;Connect Timeout=30");
+        //SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\user\Desktop\ThesisProject\database.mdf;Integrated Security=True;Connect Timeout=30");
+
+        connection connection = new connection();
 
         string name = "";
         int []activeCount = new int[500];
@@ -35,7 +37,7 @@ namespace ThesisProject
 
                 try
                 {
-                    connection.Open();
+                    connection.OpenConection();
                     cmd = new SqlCommand();
                     cmd = connection.CreateCommand();
                     cmd.CommandText = "Select teacher_id,name,joining_date,current_leave,total_leave From info,joining where joining.designation_id = '6' AND joining.teacher_id = info.Id AND joining.current_designation='1'";
@@ -58,7 +60,7 @@ namespace ThesisProject
 
                         count++;
                     }
-                    connection.Close();
+                    connection.CloseConnection();
                 }
                 catch (Exception ex)
                 {
@@ -73,14 +75,14 @@ namespace ThesisProject
                 {
                     Console.WriteLine("Updating");
                     cmd.CommandText = "Update joining Set active = '" + activeCount[i] + "' Where teacher_id = '" + teacherCount[i] + "'";
-                    connection.Open();
+                    connection.OpenConection();
                     cmd.ExecuteNonQuery();
-                    connection.Close();
+                    connection.CloseConnection();
                 }
                 name = "";
                 try
                 {
-                    connection.Open();
+                    connection.OpenConection();
                     cmd = new SqlCommand();
                     cmd = connection.CreateCommand();
                     cmd.CommandText = "Select name, active From info,joining where joining.designation_id = '6' AND joining.teacher_id = info.Id AND joining.current_designation='1' ORDER BY active DESC";
@@ -91,7 +93,7 @@ namespace ThesisProject
                     {
                         name = name + " " + reader["name"].ToString();
                     }
-                    connection.Close();
+                    connection.CloseConnection();
                 }
                 catch (Exception ex)
                 {
@@ -115,7 +117,7 @@ namespace ThesisProject
 
                 try
                 {
-                    connection.Open();
+                    connection.OpenConection();
                     cmd = new SqlCommand();
                     cmd = connection.CreateCommand();
                     cmd.CommandText = "Select teacher_id,name,joining_date,current_leave,total_leave From info,joining where joining.designation_id = '5' AND joining.teacher_id = info.Id AND joining.current_designation='1'";
@@ -138,7 +140,7 @@ namespace ThesisProject
 
                         count++;
                     }
-                    connection.Close();
+                    connection.CloseConnection();
                 }
                 catch (Exception ex)
                 {
@@ -153,14 +155,14 @@ namespace ThesisProject
                 {
                     Console.WriteLine("Updating");
                     cmd.CommandText = "Update joining Set active = '" + activeCount[i] + "' Where teacher_id = '" + teacherCount[i] + "'";
-                    connection.Open();
+                    connection.OpenConection();
                     cmd.ExecuteNonQuery();
-                    connection.Close();
+                    connection.CloseConnection();
                 }
                 name = "";
                 try
                 {
-                    connection.Open();
+                    connection.OpenConection();
                     cmd = new SqlCommand();
                     cmd = connection.CreateCommand();
                     cmd.CommandText = "Select name, active From info,joining where joining.designation_id = '5' AND joining.teacher_id = info.Id AND joining.current_designation='1' ORDER BY active DESC";
@@ -171,7 +173,7 @@ namespace ThesisProject
                     {
                         name = name + " " + reader["name"].ToString();
                     }
-                    connection.Close();
+                    connection.CloseConnection();
                 }
                 catch (Exception ex)
                 {
@@ -195,7 +197,7 @@ namespace ThesisProject
 
                 try
                 {
-                    connection.Open();
+                    connection.OpenConection();
                     cmd = new SqlCommand();
                     cmd = connection.CreateCommand();
                     cmd.CommandText = "Select teacher_id,name,joining_date,current_leave,total_leave From info,joining where joining.designation_id = '4' AND joining.teacher_id = info.Id AND joining.current_designation='1'";
@@ -218,7 +220,7 @@ namespace ThesisProject
 
                         count++;
                     }
-                    connection.Close();
+                    connection.CloseConnection();
                 }
                 catch (Exception ex)
                 {
@@ -233,14 +235,14 @@ namespace ThesisProject
                 {
                     Console.WriteLine("Updating");
                     cmd.CommandText = "Update joining Set active = '" + activeCount[i] + "' Where teacher_id = '" + teacherCount[i] + "'";
-                    connection.Open();
+                    connection.OpenConection();
                     cmd.ExecuteNonQuery();
-                    connection.Close();
+                    connection.CloseConnection();
                 }
                 name = "";
                 try
                 {
-                    connection.Open();
+                    connection.OpenConection();
                     cmd = new SqlCommand();
                     cmd = connection.CreateCommand();
                     cmd.CommandText = "Select name, active From info,joining where joining.designation_id = '4' AND joining.teacher_id = info.Id AND joining.current_designation='1' ORDER BY active DESC";
@@ -251,7 +253,7 @@ namespace ThesisProject
                     {
                         name = name + " " + reader["name"].ToString();
                     }
-                    connection.Close();
+                    connection.CloseConnection();
                 }
                 catch (Exception ex)
                 {
@@ -275,7 +277,7 @@ namespace ThesisProject
 
                 try
                 {
-                    connection.Open();
+                    connection.OpenConection();
                     cmd = new SqlCommand();
                     cmd = connection.CreateCommand();
                     cmd.CommandText = "Select teacher_id,name,joining_date,current_leave,total_leave From info,joining where joining.designation_id = '3' AND joining.teacher_id = info.Id AND joining.current_designation='1'";
@@ -298,7 +300,7 @@ namespace ThesisProject
 
                         count++;
                     }
-                    connection.Close();
+                    connection.CloseConnection();
                 }
                 catch (Exception ex)
                 {
@@ -313,14 +315,14 @@ namespace ThesisProject
                 {
                     Console.WriteLine("Updating");
                     cmd.CommandText = "Update joining Set active = '" + activeCount[i] + "' Where teacher_id = '" + teacherCount[i] + "'";
-                    connection.Open();
+                    connection.OpenConection();
                     cmd.ExecuteNonQuery();
-                    connection.Close();
+                    connection.CloseConnection();
                 }
                 name = "";
                 try
                 {
-                    connection.Open();
+                    connection.OpenConection();
                     cmd = new SqlCommand();
                     cmd = connection.CreateCommand();
                     cmd.CommandText = "Select name, active From info,joining where joining.designation_id = '3' AND joining.teacher_id = info.Id AND joining.current_designation='1' ORDER BY active DESC";
@@ -331,7 +333,7 @@ namespace ThesisProject
                     {
                         name = name + " " + reader["name"].ToString();
                     }
-                    connection.Close();
+                    connection.CloseConnection();
                 }
                 catch (Exception ex)
                 {
@@ -355,7 +357,7 @@ namespace ThesisProject
 
                 try
                 {
-                    connection.Open();
+                    connection.OpenConection();
                     cmd = new SqlCommand();
                     cmd = connection.CreateCommand();
                     cmd.CommandText = "Select teacher_id,name,joining_date,current_leave,total_leave From info,joining where joining.designation_id = '2' AND joining.teacher_id = info.Id AND joining.current_designation='1'";
@@ -378,7 +380,7 @@ namespace ThesisProject
 
                         count++;
                     }
-                    connection.Close();
+                    connection.CloseConnection();
                 }
                 catch (Exception ex)
                 {
@@ -393,14 +395,14 @@ namespace ThesisProject
                 {
                     Console.WriteLine("Updating");
                     cmd.CommandText = "Update joining Set active = '" + activeCount[i] + "' Where teacher_id = '" + teacherCount[i] + "' and joining.current_designation = '1'";
-                    connection.Open();
+                    connection.OpenConection();
                     cmd.ExecuteNonQuery();
-                    connection.Close();
+                    connection.CloseConnection();
                 }
                 name = "";
                 try
                 {
-                    connection.Open();
+                    connection.OpenConection();
                     cmd = new SqlCommand();
                     cmd = connection.CreateCommand();
                     cmd.CommandText = "Select name, active From info,joining where joining.designation_id = '2' AND joining.teacher_id = info.Id AND joining.current_designation='1' ORDER BY active DESC";
@@ -411,7 +413,7 @@ namespace ThesisProject
                     {
                         name = name + " " + reader["name"].ToString();
                     }
-                    connection.Close();
+                    connection.CloseConnection();
                 }
                 catch (Exception ex)
                 {
@@ -435,7 +437,7 @@ namespace ThesisProject
 
                 try
                 {
-                    connection.Open();
+                    connection.OpenConection();
                     cmd = new SqlCommand();
                     cmd = connection.CreateCommand();
                     cmd.CommandText = "Select teacher_id,name,joining_date,current_leave,total_leave From info,joining where joining.designation_id = '1' AND joining.teacher_id = info.Id AND joining.current_designation='1'";
@@ -458,7 +460,7 @@ namespace ThesisProject
 
                         count++;
                     }
-                    connection.Close();
+                    connection.CloseConnection();
                 }
                 catch (Exception ex)
                 {
@@ -473,14 +475,14 @@ namespace ThesisProject
                 {
                     Console.WriteLine("Updating");
                     cmd.CommandText = "Update joining Set active = '" + activeCount[i] + "' Where teacher_id = '" + teacherCount[i] + "'";
-                    connection.Open();
+                    connection.OpenConection();
                     cmd.ExecuteNonQuery();
-                    connection.Close();
+                    connection.CloseConnection();
                 }
                 name = "";
                 try
                 {
-                    connection.Open();
+                    connection.OpenConection();
                     cmd = new SqlCommand();
                     cmd = connection.CreateCommand();
                     cmd.CommandText = "Select name, active From info,joining where joining.designation_id = '1' AND joining.teacher_id = info.Id AND joining.current_designation='1' ORDER BY active DESC";
@@ -491,7 +493,7 @@ namespace ThesisProject
                     {
                         name = name + " " + reader["name"].ToString();
                     }
-                    connection.Close();
+                    connection.CloseConnection();
                 }
                 catch (Exception ex)
                 {

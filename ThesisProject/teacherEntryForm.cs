@@ -15,7 +15,9 @@ namespace ThesisProject
     
     public partial class teacherEntryForm : Form
     {
-        SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\user\Desktop\ThesisProject\database.mdf;Integrated Security=True;Connect Timeout=30");
+        //SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\user\Desktop\ThesisProject\database.mdf;Integrated Security=True;Connect Timeout=30");
+
+        connection connection = new connection();
 
         string school_name_form;
         string designation_name_form;
@@ -32,16 +34,16 @@ namespace ThesisProject
         int initRanking(String teacher_name, int techer_designation , String date_of_birth, String joining_date)
         {
 
-            connection.Open();
+            connection.OpenConection();
             SqlCommand cmd = connection.CreateCommand();
             cmd.CommandText = "Select Id from info where name = '" + teacher_name + "'";
             int teacher_id = (int)cmd.ExecuteScalar();
-            connection.Close();
+            connection.CloseConnection();
 
-            connection.Open();
+            connection.OpenConection();
             cmd.CommandText = "insert into [ranking] (id) values ('" + teacher_id + "')";
             cmd.ExecuteNonQuery();
-            connection.Close();
+            connection.CloseConnection();
 
             return teacher_id;
         }
@@ -104,32 +106,32 @@ namespace ThesisProject
 
             degree_obtained_university_name = degreeObtainedUniversityComboBox.Text;
 
-            connection.Open();
+            connection.OpenConection();
             SqlCommand cmd = connection.CreateCommand();
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = "Select school_id from school where school_name = '"+school_name_form.ToString()+"'";
             int school_id = (int)cmd.ExecuteScalar();
-            connection.Close();
+            connection.CloseConnection();
 
-            connection.Open();
+            connection.OpenConection();
             cmd.CommandText = "Select designation_id from designation where designation_name = '" + designation_name_form.ToString() + "'";
             int designation_id = (int)cmd.ExecuteScalar();
-            connection.Close();
+            connection.CloseConnection();
 
-            connection.Open();
+            connection.OpenConection();
             cmd.CommandText = "Select discipline_id from discipline where discipline_name = '" + discipline_name_form.ToString() + "'";
             int discipline_id = (int)cmd.ExecuteScalar();
-            connection.Close();
+            connection.CloseConnection();
 
-            connection.Open();
+            connection.OpenConection();
             cmd.CommandText = "insert into [info] (name,designation,discipline,school,gender,highest_degree,date_of_birth) values ('" + teacherNameTxt.Text + "','" + designation_id + "','" + discipline_id + "','" + school_id + "','" + gender + "','" + degree_name + "','" + dateTimePicker1.Text + "')";
             cmd.ExecuteNonQuery();
-            connection.Close();
+            connection.CloseConnection();
 
             int versity_count = 0;
             try
             {
-                connection.Open();
+                connection.OpenConection();
                 cmd = new SqlCommand();
                 cmd = connection.CreateCommand();
                 cmd.CommandText = "Select university_name From degreeObtainedUniversity where university_name = '"+degree_obtained_university_name+"'";
@@ -140,7 +142,7 @@ namespace ThesisProject
                 {
                     versity_count++;
                 }
-                connection.Close();
+                connection.CloseConnection();
             }
             catch (Exception ex)
             {
@@ -148,29 +150,29 @@ namespace ThesisProject
             }
 
             if (versity_count == 0) {
-                connection.Open();
+                connection.OpenConection();
                 cmd.CommandText = "insert into [degreeObtainedUniversity] (university_name) values ('" + degree_obtained_university_name + "')";
                 cmd.ExecuteNonQuery();
-                connection.Close();
+                connection.CloseConnection();
 
             }
 
-            connection.Open();
+            connection.OpenConection();
             cmd = connection.CreateCommand();
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = "Select id from info where name = '" + teacherNameTxt.Text + "'";
             int teacher_id = (int)cmd.ExecuteScalar();
-            connection.Close();
+            connection.CloseConnection();
 
-            connection.Open();
+            connection.OpenConection();
             cmd.CommandText = "insert into [teacherDegree] (teacher_id,degree_name,degree_obtained_university) values ('" + teacher_id + "','" + degree_name + "','" + degree_obtained_university_name + "')";
             cmd.ExecuteNonQuery();
-            connection.Close();
+            connection.CloseConnection();
 
-            connection.Open();
+            connection.OpenConection();
             cmd.CommandText = "insert into [joining] (teacher_id,designation_id,current_designation,joining_date,total_leave,current_leave,active) values ('" + teacher_id + "','" + designation_id + "','"+ designation_id +"','" + joiningdateTimePicker.Text + "','0','0','0')";
             cmd.ExecuteNonQuery();
-            connection.Close();
+            connection.CloseConnection();
             MessageBox.Show("New Teacher Added");
 
             //int teacher_id_rank= initRanking(teacherNameTxt.Text, designation_id, dateTimePicker1.Text, joiningdateTimePicker.Text);
@@ -185,7 +187,7 @@ namespace ThesisProject
         {
             try
             {
-                connection.Open();
+                connection.OpenConection();
                 SqlCommand cmd = new SqlCommand();
                 cmd = connection.CreateCommand();
                 cmd.CommandText = "Select school_name From school";
@@ -197,7 +199,7 @@ namespace ThesisProject
                     string schoolName = reader["school_name"].ToString();
                     schoolNameComboBox.Items.Add(schoolName);
                 }
-                connection.Close();
+                connection.CloseConnection();
             }
             catch (Exception ex)
             {
@@ -206,7 +208,7 @@ namespace ThesisProject
 
             try
             {
-                connection.Open();
+                connection.OpenConection();
                 SqlCommand cmd = new SqlCommand();
                 cmd = connection.CreateCommand();
                 cmd.CommandText = "Select designation_name From designation";
@@ -218,7 +220,7 @@ namespace ThesisProject
                     string designation_name = reader["designation_name"].ToString();
                     designationComboBox.Items.Add(designation_name);
                 }
-                connection.Close();
+                connection.CloseConnection();
             }
             catch (Exception ex)
             {
@@ -227,7 +229,7 @@ namespace ThesisProject
 
             try
             {
-                connection.Open();
+                connection.OpenConection();
                 SqlCommand cmd = new SqlCommand();
                 cmd = connection.CreateCommand();
                 cmd.CommandText = "Select degree_name From degree";
@@ -239,7 +241,7 @@ namespace ThesisProject
                     string degree_name = reader["degree_name"].ToString();
                     highestDegreeComboBox.Items.Add(degree_name);
                 }
-                connection.Close();
+                connection.CloseConnection();
             }
             catch (Exception ex)
             {
@@ -248,7 +250,7 @@ namespace ThesisProject
 
             try
             {
-                connection.Open();
+                connection.OpenConection();
                 SqlCommand cmd = new SqlCommand();
                 cmd = connection.CreateCommand();
                 cmd.CommandText = "Select university_name From degreeObtainedUniversity";
@@ -260,7 +262,7 @@ namespace ThesisProject
                     string university_name = reader["university_name"].ToString();
                     degreeObtainedUniversityComboBox.Items.Add(university_name);
                 }
-                connection.Close();
+                connection.CloseConnection();
             }
             catch (Exception ex)
             {
@@ -272,7 +274,7 @@ namespace ThesisProject
         {
             try
             {
-                connection.Open();
+                connection.OpenConection();
                 SqlCommand cmd = new SqlCommand();
                 cmd = connection.CreateCommand();
                 cmd.CommandText = "Select discipline_name From discipline Where school_id = '"+school_id+ "' Order By discipline_name ASC ";
@@ -284,7 +286,7 @@ namespace ThesisProject
                     string discipline_name = reader["discipline_name"].ToString();
                     disciplineNameComboBox.Items.Add(discipline_name);
                 }
-                connection.Close();
+                connection.CloseConnection();
             }
             catch (Exception ex)
             {
@@ -317,12 +319,12 @@ namespace ThesisProject
         {
             school_name_form = schoolNameComboBox.Text;
 
-            connection.Open();
+            connection.OpenConection();
             SqlCommand cmd = new SqlCommand();
             cmd = connection.CreateCommand();
             cmd.CommandText = "Select school_id from school where school_name = '" + school_name_form + "'";
             int school_id = (int)cmd.ExecuteScalar();
-            connection.Close();
+            connection.CloseConnection();
 
             setDisciplineCombobox(school_id);
         }

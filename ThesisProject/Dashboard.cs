@@ -15,7 +15,10 @@ namespace ThesisProject
 
     public partial class Dashboard : Form
     {
-        SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\user\Desktop\ThesisProject\database.mdf;Integrated Security=True;Connect Timeout=30");
+        //SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\user\Desktop\ThesisProject\database.mdf;Integrated Security=True;Connect Timeout=30");
+
+        connection connection = new connection();
+
         SqlCommand cmd;
 
         int[] leave_count = new int[500];
@@ -78,7 +81,7 @@ namespace ThesisProject
         {
             try
             {
-                connection.Open();
+                connection.OpenConection();
                 cmd = new SqlCommand();
                 cmd = connection.CreateCommand();
                 cmd.CommandText = "Select teacher_id,leave_date,designation From leave where joined = '0'";
@@ -100,7 +103,7 @@ namespace ThesisProject
                     
                     count++;
                 }
-                connection.Close();
+                connection.CloseConnection();
             }
             catch (Exception ex)
             {
@@ -114,18 +117,18 @@ namespace ThesisProject
             {
                 Console.WriteLine("Updating");
                 cmd.CommandText = "Update leave Set total_leave = '" + leave_count[i] + "' Where teacher_id = '" + teacher_Count[i] + "'";
-                connection.Open();
+                connection.OpenConection();
                 cmd.ExecuteNonQuery();
-                connection.Close();
+                connection.CloseConnection();
 
 
                 cmd = new SqlCommand();
                 cmd = connection.CreateCommand();
                 cmd.CommandText = "Update joining Set current_leave = '" + leave_count[i] + "' Where teacher_id = '" + teacher_Count[i] + "' and designation_id = '"+designation_count[i]+"'";
 
-                connection.Open();
+                connection.OpenConection();
                 cmd.ExecuteNonQuery();
-                connection.Close();
+                connection.CloseConnection();
             }
         }
 

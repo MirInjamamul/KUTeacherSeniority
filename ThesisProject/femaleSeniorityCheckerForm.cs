@@ -13,7 +13,9 @@ namespace ThesisProject
 {
     public partial class femaleSeniorityCheckerForm : Form
     {
-        SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\user\Desktop\ThesisProject\database.mdf;Integrated Security=True;Connect Timeout=30");
+       // SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\user\Desktop\ThesisProject\database.mdf;Integrated Security=True;Connect Timeout=30");
+
+        connection connection = new connection();
 
         string designation;
         string name = "";
@@ -31,7 +33,7 @@ namespace ThesisProject
         {
             try
             {
-                connection.Open();
+                connection.OpenConection();
                 SqlCommand cmd = new SqlCommand();
                 cmd = connection.CreateCommand();
                 cmd.CommandText = "Select designation_name From designation";
@@ -43,7 +45,7 @@ namespace ThesisProject
                     string designation_name = reader["designation_name"].ToString();
                     designationComboBox.Items.Add(designation_name);
                 }
-                connection.Close();
+                connection.CloseConnection();
             }
             catch (Exception ex)
             {
@@ -58,16 +60,16 @@ namespace ThesisProject
 
         private void checkBtn_Click(object sender, EventArgs e)
         {
-            connection.Open();
+            connection.OpenConection();
             SqlCommand cmd = connection.CreateCommand();
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = "Select designation_id from designation where designation_name = '" + designation + "'";
             int designation_id = (int)cmd.ExecuteScalar();
-            connection.Close();
+            connection.CloseConnection();
 
             try
             {
-                connection.Open();
+                connection.OpenConection();
                 cmd = new SqlCommand();
                 cmd = connection.CreateCommand();
                 cmd.CommandText = "Select teacher_id,name,joining_date,current_leave,total_leave From info,joining where joining.designation_id = '" + designation_id + "' AND joining.teacher_id = info.Id AND joining.current_designation='1' AND info.gender = '"+queryGenderName+"'";
@@ -90,7 +92,7 @@ namespace ThesisProject
 
                     count++;
                 }
-                connection.Close();
+                connection.CloseConnection();
             }
             catch (Exception ex)
             {
@@ -105,14 +107,14 @@ namespace ThesisProject
             {
                 Console.WriteLine("Updating");
                 cmd.CommandText = "Update joining Set active = '" + activeCount[i] + "' Where teacher_id = '" + teacherCount[i] + "'";
-                connection.Open();
+                connection.OpenConection();
                 cmd.ExecuteNonQuery();
-                connection.Close();
+                connection.CloseConnection();
             }
             name = "";
             try
             {
-                connection.Open();
+                connection.OpenConection();
                 cmd = new SqlCommand();
                 cmd = connection.CreateCommand();
                 cmd.CommandText = "Select name, active From info,joining where joining.designation_id = '" + designation_id + "' AND joining.teacher_id = info.Id AND joining.current_designation='1' AND info.gender = '" + queryGenderName + "' ORDER BY active DESC";
@@ -123,7 +125,7 @@ namespace ThesisProject
                 {
                     name = name + " " + reader["name"].ToString();
                 }
-                connection.Close();
+                connection.CloseConnection();
             }
             catch (Exception ex)
             {

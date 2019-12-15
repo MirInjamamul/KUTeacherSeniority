@@ -13,7 +13,9 @@ namespace ThesisProject
 {
     public partial class schoolEntryForm : Form
     {
-        SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\user\Desktop\ThesisProject\database.mdf;Integrated Security=True;Connect Timeout=30");
+        //SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\user\Desktop\ThesisProject\database.mdf;Integrated Security=True;Connect Timeout=30");
+
+        connection connection = new connection();
 
         public schoolEntryForm()
         {
@@ -22,13 +24,18 @@ namespace ThesisProject
 
         private void buttonSchoolEntry_Click(object sender, EventArgs e)
         {
-            connection.Open();
+            connection.OpenConection();
             SqlCommand cmd = connection.CreateCommand();
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = "insert into [school] (school_id,school_name) values ('" + textBoxSchoolId.Text + "','" + textBoxSchoolName.Text + "')";
             cmd.ExecuteNonQuery();
-            connection.Close();
+            connection.CloseConnection();
             MessageBox.Show("New School Added");
+        }
+
+        private void schoolEntryForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

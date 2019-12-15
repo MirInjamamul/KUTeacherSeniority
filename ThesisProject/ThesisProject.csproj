@@ -50,6 +50,7 @@
     <Compile Include="biodataForm.Designer.cs">
       <DependentUpon>biodataForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="connection.cs" />
     <Compile Include="Dashboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -153,6 +154,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="leaveForm.resx">
       <DependentUpon>leaveForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="maleSeniorityCheckerForm.resx">
+      <DependentUpon>maleSeniorityCheckerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

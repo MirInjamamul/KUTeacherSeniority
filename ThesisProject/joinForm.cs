@@ -13,7 +13,9 @@ namespace ThesisProject
 {
     public partial class joinForm : Form
     {
-        SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\user\Desktop\ThesisProject\database.mdf;Integrated Security=True;Connect Timeout=30");
+        //SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\user\Desktop\ThesisProject\database.mdf;Integrated Security=True;Connect Timeout=30");
+
+        connection connection = new connection();
 
         string designation;
         string discipline;
@@ -44,17 +46,17 @@ namespace ThesisProject
                 return;
             }
 
-            connection.Open();
+            connection.OpenConection();
             SqlCommand cmd = connection.CreateCommand();
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = "Select designation_id from designation where designation_name = '" + designation + "'";
             designation_id = (int)cmd.ExecuteScalar();
-            connection.Close();
+            connection.CloseConnection();
 
-            connection.Open();
+            connection.OpenConection();
             cmd.CommandText = "Select discipline_id from discipline where discipline_name = '" + discipline + "'";
             discipline_id = (int)cmd.ExecuteScalar();
-            connection.Close();
+            connection.CloseConnection();
 
             loadTeacherComboBox();
         }
@@ -63,7 +65,7 @@ namespace ThesisProject
         {
             try
             {
-                connection.Open();
+                connection.OpenConection();
                 SqlCommand cmd = new SqlCommand();
                 cmd = connection.CreateCommand();
                 cmd.CommandText = "Select designation_name From designation";
@@ -75,7 +77,7 @@ namespace ThesisProject
                     string designation = reader["designation_name"].ToString();
                     designationcomboBox.Items.Add(designation);
                 }
-                connection.Close();
+                connection.CloseConnection();
             }
             catch (Exception ex)
             {
@@ -84,7 +86,7 @@ namespace ThesisProject
 
             try
             {
-                connection.Open();
+                connection.OpenConection();
                 SqlCommand cmd = new SqlCommand();
                 cmd = connection.CreateCommand();
                 cmd.CommandText = "Select discipline_name From discipline";
@@ -96,7 +98,7 @@ namespace ThesisProject
                     string discipline_name = reader["discipline_name"].ToString();
                     disciplinecomboBox.Items.Add(discipline_name);
                 }
-                connection.Close();
+                connection.CloseConnection();
             }
             catch (Exception ex)
             {
@@ -124,29 +126,29 @@ namespace ThesisProject
                 return;
             }
 
-            connection.Open();
+            connection.OpenConection();
             SqlCommand cmd = connection.CreateCommand();
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = "Select id from info where name = '" + teacher_name + "'";
             int teacher_id = (int)cmd.ExecuteScalar();
-            connection.Close();
+            connection.CloseConnection();
 
-            connection.Open();
+            connection.OpenConection();
             cmd.CommandText = "Select designation_id from designation where designation_name = '" + designation + "'";
             int designation_id = (int)cmd.ExecuteScalar();
-            connection.Close();
+            connection.CloseConnection();
 
-            connection.Open();
+            connection.OpenConection();
             cmd.CommandText = "Update leave Set join_date = '" + joinDateTimePicker.Text + "' Where teacher_id = '" + teacher_id + "' and designation = '" + designation_id + "' and joined = '0'";
             cmd.ExecuteNonQuery();
-            connection.Close();
+            connection.CloseConnection();
 
             
             MessageBox.Show("Teacher Joined");
 
             try
             {
-                connection.Open();
+                connection.OpenConection();
                 cmd = new SqlCommand();
                 cmd = connection.CreateCommand();
                 cmd.CommandText = "Select join_date,leave_date from leave where teacher_id = '" + teacher_id + "' and designation = '" + designation_id + "' and joined = '0'";
@@ -161,26 +163,26 @@ namespace ThesisProject
                     leave = ((TimeSpan)(join_date - leave_date)).Days;
 
                 }
-                connection.Close();
+                connection.CloseConnection();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error " + ex);
             }
 
-            connection.Open();
+            connection.OpenConection();
             cmd.CommandText = "Update leave Set total_leave = '"+leave+"' Where teacher_id = '" + teacher_id + "' and designation = '" + designation_id + "' and joined = '0'";
             cmd.ExecuteNonQuery();
-            connection.Close();
+            connection.CloseConnection();
 
-            connection.Open();
+            connection.OpenConection();
             cmd.CommandText = "Update leave Set joined = '1' Where teacher_id = '" + teacher_id + "' and designation = '" + designation_id + "' and joined = '0'";
             cmd.ExecuteNonQuery();
-            connection.Close();
+            connection.CloseConnection();
 
             try
             {
-                connection.Open();
+                connection.OpenConection();
                 cmd = new SqlCommand();
                 cmd = connection.CreateCommand();
                 cmd.CommandText = "Select total_leave from joining where teacher_id = '" + teacher_id + "' and designation_id = '" + designation_id + "' and current_designation = '1'";
@@ -191,7 +193,7 @@ namespace ThesisProject
                 {
                     total_leave = (int)reader["total_leave"];
                 }
-                connection.Close();
+                connection.CloseConnection();
             }
             catch (Exception ex)
             {
@@ -200,15 +202,15 @@ namespace ThesisProject
 
             total_leave = total_leave + leave;
 
-            connection.Open();
+            connection.OpenConection();
             cmd.CommandText = "Update joining Set total_leave = '"+total_leave+"' Where teacher_id = '" + teacher_id + "' and designation_id = '" + designation_id + "'";
             cmd.ExecuteNonQuery();
-            connection.Close();
+            connection.CloseConnection();
 
-            connection.Open();
+            connection.OpenConection();
             cmd.CommandText = "Update joining Set current_leave = '0' Where teacher_id = '" + teacher_id + "' and designation_id = '" + designation_id + "'";
             cmd.ExecuteNonQuery();
-            connection.Close();
+            connection.CloseConnection();
 
             joinForm jf1 = new joinForm();
             this.Close();
@@ -226,7 +228,7 @@ namespace ThesisProject
         {
             try
             {
-                connection.Open();
+                connection.OpenConection();
                 SqlCommand cmd = connection.CreateCommand();
                 cmd = new SqlCommand();
                 cmd = connection.CreateCommand();
@@ -239,7 +241,7 @@ namespace ThesisProject
                     string name = reader["name"].ToString();
                     teachercomboBox.Items.Add(name);
                 }
-                connection.Close();
+                connection.CloseConnection();
             }
             catch (Exception ex)
             {

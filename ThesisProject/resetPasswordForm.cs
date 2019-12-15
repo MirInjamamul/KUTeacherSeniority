@@ -13,7 +13,9 @@ namespace ThesisProject
 {
     public partial class resetPasswordForm : Form
     {
-        SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\user\Desktop\ThesisProject\database.mdf;Integrated Security=True;Connect Timeout=30");
+        //SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\user\Desktop\ThesisProject\database.mdf;Integrated Security=True;Connect Timeout=30");
+
+        connection connection = new connection();
 
         public resetPasswordForm()
         {
@@ -24,7 +26,7 @@ namespace ThesisProject
         {
             try
             {
-                connection.Open();
+                connection.OpenConection();
                 SqlCommand cmd = new SqlCommand();
                 cmd = connection.CreateCommand();
                 cmd.CommandText = "Select password From security Where username = 'master'";
@@ -33,15 +35,15 @@ namespace ThesisProject
 
                     reader.Read();
                     string master_password = reader["password"].ToString();
-                    connection.Close();
+                    connection.CloseConnection();
 
                 if (master_password == userNameTxt.Text)
                     {
                         if(newPasswordTxt.Text == confirmPasswordTxt.Text){
-                            connection.Open();
+                            connection.OpenConection();
                             cmd.CommandText = "UPDATE security SET password = '"+newPasswordTxt.Text+"' where username = 'a'";
                             cmd.ExecuteNonQuery();
-                            connection.Close();
+                            connection.CloseConnection();
                             MessageBox.Show("Password has been reset");
                         }
                     }

@@ -13,8 +13,10 @@ namespace ThesisProject
 {
     public partial class Form1 : Form
     {
-        SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\user\Desktop\ThesisProject\database.mdf;Integrated Security=True;Connect Timeout=30");
+        //SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\user\Desktop\ThesisProject\database.mdf;Integrated Security=True;Connect Timeout=30");
         
+        connection connection = new connection();
+
         public Form1()
         {
             InitializeComponent();
@@ -24,7 +26,8 @@ namespace ThesisProject
         {
             try
             {
-                connection.Open();
+                //connection.Open();
+                connection.OpenConection();
                 SqlCommand cmd = new SqlCommand();
                 cmd = connection.CreateCommand();
                 cmd.CommandText = "Select username,password From security";
@@ -46,7 +49,7 @@ namespace ThesisProject
                         MessageBox.Show("Wrong Username and Password");
                     }
                 }
-                connection.Close();
+                connection.CloseConnection();
             }
             catch (Exception ex)
             {

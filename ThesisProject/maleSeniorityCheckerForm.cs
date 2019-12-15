@@ -16,5 +16,10 @@ namespace ThesisProject
         {
             InitializeComponent();
         }
+
+        private void maleSeniorityCheckerForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
