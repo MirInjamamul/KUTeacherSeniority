@@ -15,8 +15,6 @@ namespace ThesisProject
     
     public partial class teacherEntryForm : Form
     {
-        //SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\user\Desktop\ThesisProject\database.mdf;Integrated Security=True;Connect Timeout=30");
-
         connection connection = new connection();
 
         string school_name_form;
@@ -47,11 +45,6 @@ namespace ThesisProject
 
             return teacher_id;
         }
-
-       /* void update_dob_rank(int teacher_id, )
-        {
-
-        }*/
 
         private void addTeacherBtn_Click(object sender, EventArgs e)
         {
@@ -175,29 +168,40 @@ namespace ThesisProject
             connection.CloseConnection();
             MessageBox.Show("New Teacher Added");
 
-            //int teacher_id_rank= initRanking(teacherNameTxt.Text, designation_id, dateTimePicker1.Text, joiningdateTimePicker.Text);
-
-            //update_dob_rank(teacher_id_rank,dateTimePicker1.Text);
-
-            //update_designation_rank();
+            teacherEntryForm tef = new teacherEntryForm();
+            this.Close();
+            tef.Show();
 
         }
 
         public void teacherEntryForm_Load(object sender, EventArgs e)
+        {
+
+            loadSchoolComnoBox();
+
+            loadDesignationComboBox();
+
+            loadHighestDegeeComboBox();
+
+            loadDegreeObtainedUniversityComboBox();
+            
+        }
+
+        private void loadDegreeObtainedUniversityComboBox()
         {
             try
             {
                 connection.OpenConection();
                 SqlCommand cmd = new SqlCommand();
                 cmd = connection.CreateCommand();
-                cmd.CommandText = "Select school_name From school";
+                cmd.CommandText = "Select university_name From degreeObtainedUniversity";
 
                 SqlDataReader reader = cmd.ExecuteReader();
 
                 while (reader.Read())
                 {
-                    string schoolName = reader["school_name"].ToString();
-                    schoolNameComboBox.Items.Add(schoolName);
+                    string university_name = reader["university_name"].ToString();
+                    degreeObtainedUniversityComboBox.Items.Add(university_name);
                 }
                 connection.CloseConnection();
             }
@@ -205,28 +209,10 @@ namespace ThesisProject
             {
                 MessageBox.Show("Error " + ex);
             }
+        }
 
-            try
-            {
-                connection.OpenConection();
-                SqlCommand cmd = new SqlCommand();
-                cmd = connection.CreateCommand();
-                cmd.CommandText = "Select designation_name From designation";
-
-                SqlDataReader reader = cmd.ExecuteReader();
-
-                while (reader.Read())
-                {
-                    string designation_name = reader["designation_name"].ToString();
-                    designationComboBox.Items.Add(designation_name);
-                }
-                connection.CloseConnection();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error " + ex);
-            }
-
+        private void loadHighestDegeeComboBox()
+        {
             try
             {
                 connection.OpenConection();
@@ -247,20 +233,47 @@ namespace ThesisProject
             {
                 MessageBox.Show("Error " + ex);
             }
+        }
 
+        private void loadDesignationComboBox()
+        {
             try
             {
                 connection.OpenConection();
                 SqlCommand cmd = new SqlCommand();
                 cmd = connection.CreateCommand();
-                cmd.CommandText = "Select university_name From degreeObtainedUniversity";
+                cmd.CommandText = "Select designation_name From designation";
 
                 SqlDataReader reader = cmd.ExecuteReader();
 
                 while (reader.Read())
                 {
-                    string university_name = reader["university_name"].ToString();
-                    degreeObtainedUniversityComboBox.Items.Add(university_name);
+                    string designation_name = reader["designation_name"].ToString();
+                    designationComboBox.Items.Add(designation_name);
+                }
+                connection.CloseConnection();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error " + ex);
+            }
+        }
+
+        private void loadSchoolComnoBox()
+        {
+            try
+            {
+                connection.OpenConection();
+                SqlCommand cmd = new SqlCommand();
+                cmd = connection.CreateCommand();
+                cmd.CommandText = "Select school_name From school";
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    string schoolName = reader["school_name"].ToString();
+                    schoolNameComboBox.Items.Add(schoolName);
                 }
                 connection.CloseConnection();
             }

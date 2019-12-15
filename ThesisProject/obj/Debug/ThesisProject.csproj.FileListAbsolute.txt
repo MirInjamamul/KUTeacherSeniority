@@ -42,3 +42,4 @@ C:\Users\LATECH-001\Desktop\ThesisProject\ThesisProject\obj\Debug\ThesisProject.
 C:\Users\LATECH-001\Desktop\ThesisProject\ThesisProject\obj\Debug\ThesisProject.csproj.CoreCompileInputs.cache
 C:\Users\LATECH-001\Desktop\ThesisProject\ThesisProject\obj\Debug\ThesisProject.exe
 C:\Users\LATECH-001\Desktop\ThesisProject\ThesisProject\obj\Debug\ThesisProject.pdb
+C:\Users\LATECH-001\Desktop\ThesisProject\ThesisProject\obj\Debug\ThesisProject.maleSeniorityCheckerForm.resources
