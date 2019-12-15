@@ -24,6 +24,21 @@ namespace ThesisProject
 
         private void buttonSchoolEntry_Click(object sender, EventArgs e)
         {
+
+            if (textBoxSchoolId.Text == null || textBoxSchoolId.Text == "")
+            {
+                MessageBox.Show("Invalid School Id");
+                textBoxSchoolId.Focus();
+                return;
+            }
+
+            if (textBoxSchoolName.Text == null || textBoxSchoolName.Text == "")
+            {
+                MessageBox.Show("Invalid School name");
+                textBoxSchoolName.Focus();
+                return;
+            }
+
             connection.OpenConection();
             SqlCommand cmd = connection.CreateCommand();
             cmd.CommandType = CommandType.Text;
