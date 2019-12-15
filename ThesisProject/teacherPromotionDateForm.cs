@@ -29,48 +29,16 @@ namespace ThesisProject
 
         private void teacherJoiningDateForm_Load(object sender, EventArgs e)
         {
-            try
-            {
-                connection.OpenConection();
-                SqlCommand cmd = new SqlCommand();
-                cmd = connection.CreateCommand();
-                cmd.CommandText = "Select school_name From school";
 
-                SqlDataReader reader = cmd.ExecuteReader();
+            loadSchoolComboBox();
 
-                while (reader.Read())
-                {
-                    string schoolName = reader["school_name"].ToString();
-                    schoolComboBox.Items.Add(schoolName);
-                }
-                connection.CloseConnection();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error " + ex);
-            }
+            loadDisciplineComboBox();
 
-            try
-            {
-                connection.OpenConection();
-                SqlCommand cmd = new SqlCommand();
-                cmd = connection.CreateCommand();
-                cmd.CommandText = "Select discipline_name From discipline";
+            loadDesignationComboBox();
+        }
 
-                SqlDataReader reader = cmd.ExecuteReader();
-
-                while (reader.Read())
-                {
-                    string discipline_name = reader["discipline_name"].ToString();
-                    disciplineComboBox.Items.Add(discipline_name);
-                }
-                connection.CloseConnection();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error " + ex);
-            }
-
+        private void loadDesignationComboBox()
+        {
             try
             {
                 connection.OpenConection();
@@ -93,6 +61,54 @@ namespace ThesisProject
             }
         }
 
+        private void loadDisciplineComboBox()
+        {
+            try
+            {
+                connection.OpenConection();
+                SqlCommand cmd = new SqlCommand();
+                cmd = connection.CreateCommand();
+                cmd.CommandText = "Select discipline_name From discipline";
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    string discipline_name = reader["discipline_name"].ToString();
+                    disciplineComboBox.Items.Add(discipline_name);
+                }
+                connection.CloseConnection();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error " + ex);
+            }
+        }
+
+        private void loadSchoolComboBox()
+        {
+            try
+            {
+                connection.OpenConection();
+                SqlCommand cmd = new SqlCommand();
+                cmd = connection.CreateCommand();
+                cmd.CommandText = "Select school_name From school";
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    string schoolName = reader["school_name"].ToString();
+                    schoolComboBox.Items.Add(schoolName);
+                }
+                connection.CloseConnection();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error " + ex);
+            }
+        }
+
         private void schoolComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             school_name = schoolComboBox.Text;
@@ -105,6 +121,28 @@ namespace ThesisProject
 
         private void teacherSearchButton_Click(object sender, EventArgs e)
         {
+
+            if (schoolComboBox.Text == null || schoolComboBox.Text == "")
+            {
+                MessageBox.Show("Invalid School name");
+                schoolComboBox.Focus();
+                return;
+            }
+
+            if (disciplineComboBox.Text == null || disciplineComboBox.Text == "")
+            {
+                MessageBox.Show("Invalid Discipline name");
+                disciplineComboBox.Focus();
+                return;
+            }
+
+            if (designationComboBox.Text == null || designationComboBox.Text == "")
+            {
+                MessageBox.Show("Invalid Designation name");
+                designationComboBox.Focus();
+                return;
+            }
+
             connection.OpenConection();
             SqlCommand cmd = connection.CreateCommand();
             cmd.CommandType = CommandType.Text;
@@ -146,6 +184,13 @@ namespace ThesisProject
 
         private void confirmButton2_Click(object sender, EventArgs e)
         {
+            if (teacherComboBox.Text == null || teacherComboBox.Text == "")
+            {
+                MessageBox.Show("Invalid Teacher name");
+                teacherComboBox.Focus();
+                return;
+            }
+
             connection.OpenConection();
             SqlCommand cmd = connection.CreateCommand();
             cmd.CommandType = CommandType.Text;
@@ -181,6 +226,10 @@ namespace ThesisProject
             cmd.ExecuteNonQuery();
             connection.CloseConnection();
             MessageBox.Show("Teacher Promotion Done");
+
+            teacherPromotionDateForm tpdf = new teacherPromotionDateForm();
+            this.Close();
+            tpdf.Show();
             
         }
 
