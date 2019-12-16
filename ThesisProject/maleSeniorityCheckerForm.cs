@@ -12,14 +12,16 @@ namespace ThesisProject
 {
     public partial class maleSeniorityCheckerForm : Form
     {
-        public maleSeniorityCheckerForm()
+        private String gender;
+        public maleSeniorityCheckerForm(String gender)
         {
+            this.gender = gender;
             InitializeComponent();
         }
 
         private void maleSeniorityCheckerForm_Load(object sender, EventArgs e)
         {
-
+            label1.Text = gender;
         }
     }
 }

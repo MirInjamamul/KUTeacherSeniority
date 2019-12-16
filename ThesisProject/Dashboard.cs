@@ -154,14 +154,17 @@ namespace ThesisProject
 
         private void maleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            maleSeniorityCheckerForm maleSeniorityCheckerForm = new maleSeniorityCheckerForm();
+            maleSeniorityCheckerForm maleSeniorityCheckerForm = new maleSeniorityCheckerForm("male");
             maleSeniorityCheckerForm.Show();
         }
 
         private void femaleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            femaleSeniorityCheckerForm femaleSeniorityCheckerForm = new femaleSeniorityCheckerForm();
-            femaleSeniorityCheckerForm.Show();
+            /*femaleSeniorityCheckerForm femaleSeniorityCheckerForm = new femaleSeniorityCheckerForm();
+            femaleSeniorityCheckerForm.Show(); */
+
+            maleSeniorityCheckerForm mscf = new maleSeniorityCheckerForm("female");
+            mscf.Show();
         }
 
         private void schoolToolStripMenuItem1_Click(object sender, EventArgs e)
