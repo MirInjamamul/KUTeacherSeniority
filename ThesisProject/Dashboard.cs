@@ -44,8 +44,11 @@ namespace ThesisProject
 
         private void designationToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            designationSeniorityForm designationSeniorityForm = new designationSeniorityForm();
-            designationSeniorityForm.Show();
+            /*designationSeniorityForm designationSeniorityForm = new designationSeniorityForm();
+            designationSeniorityForm.Show(); */
+
+            allTeacherSeniorityForm atsf = new allTeacherSeniorityForm();
+            atsf.Show();
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)

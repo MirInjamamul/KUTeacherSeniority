@@ -44,6 +44,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="allTeacherSeniorityForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="allTeacherSeniorityForm.Designer.cs">
+      <DependentUpon>allTeacherSeniorityForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="biodataForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,6 +137,9 @@
     <Compile Include="teacherPromotionDateForm.Designer.cs">
       <DependentUpon>teacherPromotionDateForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="allTeacherSeniorityForm.resx">
+      <DependentUpon>allTeacherSeniorityForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="biodataForm.resx">
       <DependentUpon>biodataForm.cs</DependentUpon>
     </EmbeddedResource>

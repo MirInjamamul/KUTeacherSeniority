@@ -13,7 +13,7 @@ namespace ThesisProject
 {
     public partial class biodataForm : Form
     {
-        SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\user\Desktop\ThesisProject\database.mdf;Integrated Security=True;Connect Timeout=30");
+        connection connection = new connection();
 
         string designation;
         string discipline;
@@ -33,7 +33,7 @@ namespace ThesisProject
         {
             try
             {
-                connection.Open();
+                connection.OpenConection();
                 SqlCommand cmd = new SqlCommand();
                 cmd = connection.CreateCommand();
                 cmd.CommandText = "Select designation_name From designation";
@@ -45,7 +45,7 @@ namespace ThesisProject
                     string designation = reader["designation_name"].ToString();
                     designationcomboBox.Items.Add(designation);
                 }
-                connection.Close();
+                connection.CloseConnection();
             }
             catch (Exception ex)
             {
@@ -54,7 +54,7 @@ namespace ThesisProject
 
             try
             {
-                connection.Open();
+                connection.OpenConection();
                 SqlCommand cmd = new SqlCommand();
                 cmd = connection.CreateCommand();
                 cmd.CommandText = "Select discipline_name From discipline";
@@ -66,7 +66,7 @@ namespace ThesisProject
                     string discipline_name = reader["discipline_name"].ToString();
                     disciplinecomboBox.Items.Add(discipline_name);
                 }
-                connection.Close();
+                connection.CloseConnection();
             }
             catch (Exception ex)
             {
@@ -76,21 +76,21 @@ namespace ThesisProject
 
         private void searchbutton_Click(object sender, EventArgs e)
         {
-            connection.Open();
+            connection.OpenConection();
             SqlCommand cmd = connection.CreateCommand();
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = "Select designation_id from designation where designation_name = '" + designation + "'";
             designation_id = (int)cmd.ExecuteScalar();
-            connection.Close();
+            connection.CloseConnection();
 
-            connection.Open();
+            connection.OpenConection();
             cmd.CommandText = "Select discipline_id from discipline where discipline_name = '" + discipline + "'";
             int discipline_id = (int)cmd.ExecuteScalar();
-            connection.Close();
+            connection.CloseConnection();
 
             try
             {
-                connection.Open();
+                connection.OpenConection();
                 cmd = new SqlCommand();
                 cmd = connection.CreateCommand();
                 cmd.CommandText = "Select name From info where designation = '" + designation_id + "' AND discipline = '" + discipline_id + "'";
@@ -102,7 +102,7 @@ namespace ThesisProject
                     string name = reader["name"].ToString();
                     teachercomboBox.Items.Add(name);
                 }
-                connection.Close();
+                connection.CloseConnection();
             }
             catch (Exception ex)
             {
@@ -112,18 +112,18 @@ namespace ThesisProject
 
         private void confirmbutton_Click(object sender, EventArgs e)
         {
-            connection.Open();
+            connection.OpenConection();
             SqlCommand cmd = connection.CreateCommand();
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = "Select Id from info where name = '" + teacher_name + "'";
             teacher_id = (int)cmd.ExecuteScalar();
-            connection.Close();
+            connection.CloseConnection();
 
 
 
             try
             {
-                connection.Open();
+                connection.OpenConection();
                 cmd = connection.CreateCommand();
                 cmd.CommandType = CommandType.Text;
                 cmd.CommandText = "Select highest_degree,date_of_birth,designation,joining_date From info,joining where name = '" + teacher_name + "' AND joining.teacher_id = '"+teacher_id+"' AND joining.designation_id = '"+designation_id+"'";
@@ -151,7 +151,7 @@ namespace ThesisProject
                     labelBioDisciplineName.Text = discipline.ToString();
                     labelBioDisciplineName.Visible = true;
                 }
-                connection.Close();
+                connection.CloseConnection();
             }
             catch (Exception ex)
             {
@@ -160,7 +160,7 @@ namespace ThesisProject
 
             try
             {
-                connection.Open();
+                connection.OpenConection();
                 cmd = connection.CreateCommand();
                 cmd.CommandType = CommandType.Text;
                 cmd.CommandText = "Select degree_obtained_university From teacherDegree where teacher_id = '" + teacher_id + "' AND degree_name = '" + labelBioHighestDegree.Text + "'";
@@ -173,7 +173,7 @@ namespace ThesisProject
                     labelBioHighestDegreeObtainedUniversity.Text = (string)reader["degree_obtained_university"].ToString();
                     labelBioHighestDegreeObtainedUniversity.Visible = true;
                 }
-                connection.Close();
+                connection.CloseConnection();
             }
             catch (Exception ex)
             {
@@ -182,7 +182,7 @@ namespace ThesisProject
 
             try
             {
-                connection.Open();
+                connection.OpenConection();
                 cmd = connection.CreateCommand();
                 cmd.CommandType = CommandType.Text;
                 cmd.CommandText = "Select leave_date,join_date From leave where teacher_id = '" + teacher_id + "' AND designation = '" + designation_id + "'";
@@ -201,10 +201,10 @@ namespace ThesisProject
                     if (join == "")
                         join = "Not Join Yet";
 
-                    textBoxBioLeaveJoin.Text = textBoxBioLeaveJoin.Text + "Leave : " + leave + " Join : " + join +"\n";
+                    //textBoxBioLeaveJoin.Text = textBoxBioLeaveJoin.Text + "Leave : " + leave + " Join : " + join +"\n";
                     
                 }
-                connection.Close();
+                connection.CloseConnection();
             }
             catch (Exception ex)
             {
