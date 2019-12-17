@@ -82,57 +82,71 @@ namespace ThesisProject
 
         private void Dashboard_Load(object sender, EventArgs e)
         {
-            try
-            {
-                connection.OpenConection();
-                cmd = new SqlCommand();
-                cmd = connection.CreateCommand();
-                cmd.CommandText = "Select teacher_id,leave_date,designation From leave where joined = '0'";
 
-                SqlDataReader reader = cmd.ExecuteReader();
-
-                while (reader.Read())
-                {
-                    DateTime leave_date = (DateTime)reader["leave_date"];
-                    int teacher_id = (int)reader["teacher_id"];
-                    int designation = (int)reader["designation"];
-
-                    DateTime now = DateTime.Now;
-                    int leave = ((TimeSpan)(now - leave_date)).Days;
-
-                    leave_count[count] = leave;
-                    teacher_Count[count] = teacher_id;
-                    designation_count[count] = designation;
-                    
-                    count++;
-                }
-                connection.CloseConnection();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error " + ex);
-            }
-
+            SqlCommand cmd = new SqlCommand();
             cmd = new SqlCommand();
             cmd = connection.CreateCommand();
+            cmd.CommandText = "Select COUNT(*) From leave where joined = '0'";
+            connection.OpenConection();
+            int dataCount = (int)cmd.ExecuteScalar();
+            connection.CloseConnection();
 
-            for (int i = 0; i < teacher_Count.Length; i++)
+            if (dataCount > 0)
             {
-                Console.WriteLine("Updating");
-                cmd.CommandText = "Update leave Set total_leave = '" + leave_count[i] + "' Where teacher_id = '" + teacher_Count[i] + "'";
-                connection.OpenConection();
-                cmd.ExecuteNonQuery();
-                connection.CloseConnection();
+                try
+                {
+                    connection.OpenConection();
+                    cmd = new SqlCommand();
+                    cmd = connection.CreateCommand();
+                    cmd.CommandText = "Select teacher_id,leave_date,designation From leave where joined = '0'";
 
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        DateTime leave_date = (DateTime)reader["leave_date"];
+                        int teacher_id = (int)reader["teacher_id"];
+                        int designation = (int)reader["designation"];
+
+                        DateTime now = DateTime.Now;
+                        int leave = ((TimeSpan)(now - leave_date)).Days;
+
+                        leave_count[count] = leave;
+                        teacher_Count[count] = teacher_id;
+                        designation_count[count] = designation;
+
+                        count++;
+                    }
+                    connection.CloseConnection();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error " + ex);
+                }
 
                 cmd = new SqlCommand();
                 cmd = connection.CreateCommand();
-                cmd.CommandText = "Update joining Set current_leave = '" + leave_count[i] + "' Where teacher_id = '" + teacher_Count[i] + "' and designation_id = '"+designation_count[i]+"'";
 
-                connection.OpenConection();
-                cmd.ExecuteNonQuery();
-                connection.CloseConnection();
+                for (int i = 0; i < teacher_Count.Length; i++)
+                {
+                    Console.WriteLine("Updating");
+                    cmd.CommandText = "Update leave Set total_leave = '" + leave_count[i] + "' Where teacher_id = '" + teacher_Count[i] + "'";
+                    connection.OpenConection();
+                    cmd.ExecuteNonQuery();
+                    connection.CloseConnection();
+
+
+                    cmd = new SqlCommand();
+                    cmd = connection.CreateCommand();
+                    cmd.CommandText = "Update joining Set current_leave = '" + leave_count[i] + "' Where teacher_id = '" + teacher_Count[i] + "' and designation_id = '" + designation_count[i] + "'";
+
+                    connection.OpenConection();
+                    cmd.ExecuteNonQuery();
+                    connection.CloseConnection();
+                }
             }
+
+            
         }
 
         private void joinToolStripMenuItem_Click(object sender, EventArgs e)
@@ -169,8 +183,8 @@ namespace ThesisProject
 
         private void schoolToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            schoolDesignationForm schoolDesignationForm = new schoolDesignationForm();
-            schoolDesignationForm.Show();
+           /* schoolDesignationForm schoolDesignationForm = new schoolDesignationForm();
+            schoolDesignationForm.Show(); */
         }
 
         private void bioToolStripMenuItem_Click(object sender, EventArgs e)

@@ -21,8 +21,7 @@ namespace ThesisProject
 
         int designation_id;
         int teacher_id;
-
-        string leavejoin;
+        
 
         public biodataForm()
         {

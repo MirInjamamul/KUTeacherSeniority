@@ -23,7 +23,6 @@ namespace ThesisProject
         int[] activeCount = new int[500];
         int[] teacherCount = new int[500];
         int count = 0;
-        string queryGenderName = "Female";
 
         public schoolDesignationForm()
         {
