@@ -154,7 +154,7 @@ namespace ThesisProject
 
         private void maleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            maleSeniorityCheckerForm maleSeniorityCheckerForm = new maleSeniorityCheckerForm("male");
+            maleSeniorityCheckerForm maleSeniorityCheckerForm = new maleSeniorityCheckerForm("Male");
             maleSeniorityCheckerForm.Show();
         }
 
@@ -163,7 +163,7 @@ namespace ThesisProject
             /*femaleSeniorityCheckerForm femaleSeniorityCheckerForm = new femaleSeniorityCheckerForm();
             femaleSeniorityCheckerForm.Show(); */
 
-            maleSeniorityCheckerForm mscf = new maleSeniorityCheckerForm("female");
+            maleSeniorityCheckerForm mscf = new maleSeniorityCheckerForm("Female");
             mscf.Show();
         }
 
@@ -177,6 +177,63 @@ namespace ThesisProject
         {
             biodataForm biodataForm = new biodataForm();
             biodataForm.Show();
+        }
+
+        private void scienceEngineeringAndTechnologyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            schoolSeniorityCheckerForm sscf = new schoolSeniorityCheckerForm(1);
+            
+            sscf.Show();
+
+        }
+
+        private void artsAndHuminitiesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            schoolSeniorityCheckerForm sscf = new schoolSeniorityCheckerForm(2);
+            
+            sscf.Show();
+        }
+
+        private void managementAndBuisiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            schoolSeniorityCheckerForm sscf = new schoolSeniorityCheckerForm(3);
+            
+            sscf.Show();
+        }
+
+        private void socialScienceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            schoolSeniorityCheckerForm sscf = new schoolSeniorityCheckerForm(4);
+            
+            sscf.Show();
+        }
+
+        private void lifeScienceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            schoolSeniorityCheckerForm sscf = new schoolSeniorityCheckerForm(5);
+            
+            sscf.Show();
+        }
+
+        private void lawToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            schoolSeniorityCheckerForm sscf = new schoolSeniorityCheckerForm(6);
+            
+            sscf.Show();
+        }
+
+        private void fineArtsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            schoolSeniorityCheckerForm sscf = new schoolSeniorityCheckerForm(7);
+            
+            sscf.Show();
+        }
+
+        private void educationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            schoolSeniorityCheckerForm sscf = new schoolSeniorityCheckerForm(8);
+            
+            sscf.Show();
         }
     }
 }

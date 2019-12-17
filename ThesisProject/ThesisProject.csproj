@@ -125,6 +125,12 @@
     <Compile Include="schoolEntryForm.Designer.cs">
       <DependentUpon>schoolEntryForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="schoolSeniorityCheckerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="schoolSeniorityCheckerForm.Designer.cs">
+      <DependentUpon>schoolSeniorityCheckerForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="teacherEntryForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -184,6 +190,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="schoolEntryForm.resx">
       <DependentUpon>schoolEntryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="schoolSeniorityCheckerForm.resx">
+      <DependentUpon>schoolSeniorityCheckerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="teacherEntryForm.resx">
       <DependentUpon>teacherEntryForm.cs</DependentUpon>

@@ -42,8 +42,15 @@
             this.degreeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.seniorityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.designationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.disciplineToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.schoolToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.scienceEngineeringAndTechnologyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.artsAndHuminitiesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.managementAndBuisiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.socialScienceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lifeScienceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lawToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fineArtsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.educationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.genderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.maleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.femaleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -157,7 +164,6 @@
             // 
             this.seniorityToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.designationToolStripMenuItem,
-            this.disciplineToolStripMenuItem1,
             this.schoolToolStripMenuItem1,
             this.genderToolStripMenuItem});
             this.seniorityToolStripMenuItem.Name = "seniorityToolStripMenuItem";
@@ -167,22 +173,81 @@
             // designationToolStripMenuItem
             // 
             this.designationToolStripMenuItem.Name = "designationToolStripMenuItem";
-            this.designationToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.designationToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.designationToolStripMenuItem.Text = "Versity Wise";
             this.designationToolStripMenuItem.Click += new System.EventHandler(this.designationToolStripMenuItem_Click);
             // 
-            // disciplineToolStripMenuItem1
-            // 
-            this.disciplineToolStripMenuItem1.Name = "disciplineToolStripMenuItem1";
-            this.disciplineToolStripMenuItem1.Size = new System.Drawing.Size(172, 22);
-            this.disciplineToolStripMenuItem1.Text = "Discipline Wise";
-            // 
             // schoolToolStripMenuItem1
             // 
+            this.schoolToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.scienceEngineeringAndTechnologyToolStripMenuItem,
+            this.artsAndHuminitiesToolStripMenuItem,
+            this.managementAndBuisiToolStripMenuItem,
+            this.socialScienceToolStripMenuItem,
+            this.lifeScienceToolStripMenuItem,
+            this.lawToolStripMenuItem,
+            this.fineArtsToolStripMenuItem,
+            this.educationToolStripMenuItem});
             this.schoolToolStripMenuItem1.Name = "schoolToolStripMenuItem1";
-            this.schoolToolStripMenuItem1.Size = new System.Drawing.Size(172, 22);
+            this.schoolToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.schoolToolStripMenuItem1.Text = "School Wise";
             this.schoolToolStripMenuItem1.Click += new System.EventHandler(this.schoolToolStripMenuItem1_Click);
+            // 
+            // scienceEngineeringAndTechnologyToolStripMenuItem
+            // 
+            this.scienceEngineeringAndTechnologyToolStripMenuItem.Name = "scienceEngineeringAndTechnologyToolStripMenuItem";
+            this.scienceEngineeringAndTechnologyToolStripMenuItem.Size = new System.Drawing.Size(327, 22);
+            this.scienceEngineeringAndTechnologyToolStripMenuItem.Text = "Science , Engineering and Technology";
+            this.scienceEngineeringAndTechnologyToolStripMenuItem.Click += new System.EventHandler(this.scienceEngineeringAndTechnologyToolStripMenuItem_Click);
+            // 
+            // artsAndHuminitiesToolStripMenuItem
+            // 
+            this.artsAndHuminitiesToolStripMenuItem.Name = "artsAndHuminitiesToolStripMenuItem";
+            this.artsAndHuminitiesToolStripMenuItem.Size = new System.Drawing.Size(327, 22);
+            this.artsAndHuminitiesToolStripMenuItem.Text = "Arts and Huminities";
+            this.artsAndHuminitiesToolStripMenuItem.Click += new System.EventHandler(this.artsAndHuminitiesToolStripMenuItem_Click);
+            // 
+            // managementAndBuisiToolStripMenuItem
+            // 
+            this.managementAndBuisiToolStripMenuItem.Name = "managementAndBuisiToolStripMenuItem";
+            this.managementAndBuisiToolStripMenuItem.Size = new System.Drawing.Size(327, 22);
+            this.managementAndBuisiToolStripMenuItem.Text = "Management and Buisiness";
+            this.managementAndBuisiToolStripMenuItem.Click += new System.EventHandler(this.managementAndBuisiToolStripMenuItem_Click);
+            // 
+            // socialScienceToolStripMenuItem
+            // 
+            this.socialScienceToolStripMenuItem.Name = "socialScienceToolStripMenuItem";
+            this.socialScienceToolStripMenuItem.Size = new System.Drawing.Size(327, 22);
+            this.socialScienceToolStripMenuItem.Text = "Social Science";
+            this.socialScienceToolStripMenuItem.Click += new System.EventHandler(this.socialScienceToolStripMenuItem_Click);
+            // 
+            // lifeScienceToolStripMenuItem
+            // 
+            this.lifeScienceToolStripMenuItem.Name = "lifeScienceToolStripMenuItem";
+            this.lifeScienceToolStripMenuItem.Size = new System.Drawing.Size(327, 22);
+            this.lifeScienceToolStripMenuItem.Text = "Life Science";
+            this.lifeScienceToolStripMenuItem.Click += new System.EventHandler(this.lifeScienceToolStripMenuItem_Click);
+            // 
+            // lawToolStripMenuItem
+            // 
+            this.lawToolStripMenuItem.Name = "lawToolStripMenuItem";
+            this.lawToolStripMenuItem.Size = new System.Drawing.Size(327, 22);
+            this.lawToolStripMenuItem.Text = "Law";
+            this.lawToolStripMenuItem.Click += new System.EventHandler(this.lawToolStripMenuItem_Click);
+            // 
+            // fineArtsToolStripMenuItem
+            // 
+            this.fineArtsToolStripMenuItem.Name = "fineArtsToolStripMenuItem";
+            this.fineArtsToolStripMenuItem.Size = new System.Drawing.Size(327, 22);
+            this.fineArtsToolStripMenuItem.Text = "Fine Arts";
+            this.fineArtsToolStripMenuItem.Click += new System.EventHandler(this.fineArtsToolStripMenuItem_Click);
+            // 
+            // educationToolStripMenuItem
+            // 
+            this.educationToolStripMenuItem.Name = "educationToolStripMenuItem";
+            this.educationToolStripMenuItem.Size = new System.Drawing.Size(327, 22);
+            this.educationToolStripMenuItem.Text = "Education";
+            this.educationToolStripMenuItem.Click += new System.EventHandler(this.educationToolStripMenuItem_Click);
             // 
             // genderToolStripMenuItem
             // 
@@ -190,7 +255,7 @@
             this.maleToolStripMenuItem,
             this.femaleToolStripMenuItem});
             this.genderToolStripMenuItem.Name = "genderToolStripMenuItem";
-            this.genderToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.genderToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.genderToolStripMenuItem.Text = "Gender Wise";
             this.genderToolStripMenuItem.Click += new System.EventHandler(this.genderToolStripMenuItem_Click);
             // 
@@ -247,7 +312,6 @@
         private System.Windows.Forms.ToolStripMenuItem degreeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem seniorityToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem designationToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem disciplineToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem schoolToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem genderToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem leaveToolStripMenuItem;
@@ -257,5 +321,13 @@
         private System.Windows.Forms.ToolStripMenuItem maleToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem femaleToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bioToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem scienceEngineeringAndTechnologyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem artsAndHuminitiesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem managementAndBuisiToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem socialScienceToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem lifeScienceToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem lawToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem fineArtsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem educationToolStripMenuItem;
     }
 }
