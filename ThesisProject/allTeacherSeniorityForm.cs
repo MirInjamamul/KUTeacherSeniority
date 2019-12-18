@@ -97,7 +97,9 @@ namespace ThesisProject
                         cmd.CommandText = "Select teacher_id,name,joining_date,current_leave,total_leave From info,joining where joining.designation_id = '1' AND joining.teacher_id = info.Id AND joining.current_designation='1'";
 
                         SqlDataReader reader = cmd.ExecuteReader();
-
+                        activeCount = new int[500];
+                        teacherCount = new int[500];
+                        int count = 0;
                         while (reader.Read())
                         {
                             DateTime seniority = (DateTime)reader["joining_date"];
@@ -357,7 +359,9 @@ namespace ThesisProject
                         cmd.CommandText = "Select teacher_id,name,joining_date,current_leave,total_leave From info,joining where joining.designation_id = '2' AND joining.teacher_id = info.Id AND joining.current_designation='1'";
 
                         SqlDataReader reader = cmd.ExecuteReader();
-
+                        activeCount = new int[500];
+                        teacherCount = new int[500];
+                        int count = 0;
                         while (reader.Read())
                         {
                             DateTime seniority = (DateTime)reader["joining_date"];
@@ -599,7 +603,9 @@ namespace ThesisProject
                         cmd.CommandText = "Select teacher_id,name,joining_date,current_leave,total_leave From info,joining where joining.designation_id = '3' AND joining.teacher_id = info.Id AND joining.current_designation='1'";
 
                         SqlDataReader reader = cmd.ExecuteReader();
-
+                        activeCount = new int[500];
+                        teacherCount = new int[500];
+                        int count = 0;
                         while (reader.Read())
                         {
                             DateTime seniority = (DateTime)reader["joining_date"];
@@ -853,7 +859,9 @@ namespace ThesisProject
                         cmd.CommandText = "Select teacher_id,name,joining_date,current_leave,total_leave From info,joining where joining.designation_id = '4' AND joining.teacher_id = info.Id AND joining.current_designation='1'";
 
                         SqlDataReader reader = cmd.ExecuteReader();
-
+                        activeCount = new int[500];
+                        teacherCount = new int[500];
+                        int count = 0;
                         while (reader.Read())
                         {
                             DateTime seniority = (DateTime)reader["joining_date"];
@@ -1104,7 +1112,9 @@ namespace ThesisProject
                         cmd.CommandText = "Select teacher_id,name,joining_date,current_leave,total_leave From info,joining where joining.designation_id = '5' AND joining.teacher_id = info.Id AND joining.current_designation='1'";
 
                         SqlDataReader reader = cmd.ExecuteReader();
-
+                        activeCount = new int[500];
+                        teacherCount = new int[500];
+                        int count = 0;
                         while (reader.Read())
                         {
                             DateTime seniority = (DateTime)reader["joining_date"];
@@ -1354,7 +1364,9 @@ namespace ThesisProject
                         cmd.CommandText = "Select teacher_id,name,joining_date,current_leave,total_leave From info,joining where joining.designation_id = '6' AND joining.teacher_id = info.Id AND joining.current_designation='1'";
 
                         SqlDataReader reader = cmd.ExecuteReader();
-
+                        activeCount = new int[500];
+                        teacherCount = new int[500];
+                        int count = 0;
                         while (reader.Read())
                         {
                             DateTime seniority = (DateTime)reader["joining_date"];
@@ -1486,10 +1498,7 @@ namespace ThesisProject
                     for (i = 0; i < val; i++)
                     {
                         int j = i + 1;
-                        if (teacherCount[i] == 0)
-                        {
-                            break;
-                        }
+                        
                         cmd = new SqlCommand();
                         cmd = connection.CreateCommand();
                         cmd.CommandText = "Select name From info where Id = '" + teacherCount[i] + "'";
@@ -1506,14 +1515,8 @@ namespace ThesisProject
                         connection.CloseConnection();
 
 
-                        /*    cmd = new SqlCommand();
-                            cmd = connection.CreateCommand();
-                            cmd.CommandText = "Select current_designation From joining where teacher_id = '" + teacherCount[i] + "'";
-                            connection.OpenConection();
-                            int flag = (int)cmd.ExecuteScalar();
-                            connection.CloseConnection();*/
-                        int flag = 1;
-                        if (teacherCount[i] != 0 && flag == 1)
+                       
+                        if (teacherCount[i] != 0)
                         {
                             celldata.Add(new string[] { "" + ranking, "" + teacher_name, "" + discipline_name, "Professor (Grade 1)" });
                             ranking++;
