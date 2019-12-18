@@ -18,9 +18,7 @@ namespace ThesisProject
         //SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\user\Desktop\ThesisProject\database.mdf;Integrated Security=True;Connect Timeout=30");
 
         connection connection = new connection();
-
-        SqlCommand cmd;
-
+        
         int[] leave_count = new int[500];
         int[] teacher_Count = new int[500];
         int[] designation_count = new int[500];
@@ -253,168 +251,168 @@ namespace ThesisProject
         private void aRCHITECTUREToolStripMenuItem_Click(object sender, EventArgs e)
         {
             disciplineSeniorityChecker dsc = new disciplineSeniorityChecker(1);
-            this.Close();
+            
             dsc.Show();
         }
 
         private void cOMPUTERSCIENCEANDENGINEERINGToolStripMenuItem_Click(object sender, EventArgs e)
         {
             disciplineSeniorityChecker dsc = new disciplineSeniorityChecker(2);
-            this.Close();
+            
             dsc.Show();
         }
 
         private void uRBANANDRURALPLANNINGToolStripMenuItem_Click(object sender, EventArgs e)
         {
             disciplineSeniorityChecker dsc = new disciplineSeniorityChecker(4);
-            this.Close();
+            
             dsc.Show();
         }
 
         private void eLECTRONICSANDCOMMUNICATIONToolStripMenuItem_Click(object sender, EventArgs e)
         {
             disciplineSeniorityChecker dsc = new disciplineSeniorityChecker(9);
-            this.Close();
+            
             dsc.Show();
         }
 
         private void mATHEMATICSToolStripMenuItem_Click(object sender, EventArgs e)
         {
             disciplineSeniorityChecker dsc = new disciplineSeniorityChecker(12);
-            this.Close();
+            
             dsc.Show();
         }
 
         private void pHYSCICSToolStripMenuItem_Click(object sender, EventArgs e)
         {
             disciplineSeniorityChecker dsc = new disciplineSeniorityChecker(17);
-            this.Close();
+            
             dsc.Show();
         }
 
         private void cHEMISTRYToolStripMenuItem_Click(object sender, EventArgs e)
         {
             disciplineSeniorityChecker dsc = new disciplineSeniorityChecker(18);
-            this.Close();
+            
             dsc.Show();
         }
 
         private void sTATISTICSToolStripMenuItem_Click(object sender, EventArgs e)
         {
             disciplineSeniorityChecker dsc = new disciplineSeniorityChecker(20);
-            this.Close();
+            
             dsc.Show();
         }
 
         private void bUSINESSADMINISTRATIONToolStripMenuItem_Click(object sender, EventArgs e)
         {
             disciplineSeniorityChecker dsc = new disciplineSeniorityChecker(3);
-            this.Close();
+            
             dsc.Show();
         }
 
         private void hUMANRESIURCEMANAGEMENTToolStripMenuItem_Click(object sender, EventArgs e)
         {
             disciplineSeniorityChecker dsc = new disciplineSeniorityChecker(26);
-            this.Close();
+            
             dsc.Show();
         }
 
         private void fORESTYANDWOODTECHNOLOGYToolStripMenuItem_Click(object sender, EventArgs e)
         {
             disciplineSeniorityChecker dsc = new disciplineSeniorityChecker(5);
-            this.Close();
+            
             dsc.Show();
         }
 
         private void fISHERIESANDMARINERESOURCEToolStripMenuItem_Click(object sender, EventArgs e)
         {
             disciplineSeniorityChecker dsc = new disciplineSeniorityChecker(6);
-            this.Close();
+            
             dsc.Show();
         }
 
         private void bIOTECHNOLOGYToolStripMenuItem_Click(object sender, EventArgs e)
         {
             disciplineSeniorityChecker dsc = new disciplineSeniorityChecker(7);
-            this.Close();
+            
             dsc.Show();
         }
 
         private void eNVIRONMENTALSCIENCEToolStripMenuItem_Click(object sender, EventArgs e)
         {
             disciplineSeniorityChecker dsc = new disciplineSeniorityChecker(10);
-            this.Close();
+            
             dsc.Show();
         }
 
         private void aGROTECHNOLOGYToolStripMenuItem_Click(object sender, EventArgs e)
         {
             disciplineSeniorityChecker dsc = new disciplineSeniorityChecker(8);
-            this.Close();
+            
             dsc.Show();
         }
 
         private void fARMACYToolStripMenuItem_Click(object sender, EventArgs e)
         {
             disciplineSeniorityChecker dsc = new disciplineSeniorityChecker(17);
-            this.Close();
+            
             dsc.Show();
         }
 
         private void sOILWATERENVIRONMENTSToolStripMenuItem_Click(object sender, EventArgs e)
         {
             disciplineSeniorityChecker dsc = new disciplineSeniorityChecker(13);
-            this.Close();
+            
             dsc.Show();
         }
 
         private void eCONOMICSToolStripMenuItem_Click(object sender, EventArgs e)
         {
             disciplineSeniorityChecker dsc = new disciplineSeniorityChecker(15);
-            this.Close();
+            
             dsc.Show();
         }
 
         private void sOCIOLOGYToolStripMenuItem_Click(object sender, EventArgs e)
         {
             disciplineSeniorityChecker dsc = new disciplineSeniorityChecker(16);
-            this.Close();
+            
             dsc.Show();
         }
 
         private void dEVELOPMENTSTUDIESToolStripMenuItem_Click(object sender, EventArgs e)
         {
             disciplineSeniorityChecker dsc = new disciplineSeniorityChecker(21);
-            this.Close();
+            
             dsc.Show();
         }
 
         private void jOUNALISMToolStripMenuItem_Click(object sender, EventArgs e)
         {
             disciplineSeniorityChecker dsc = new disciplineSeniorityChecker(25);
-            this.Close();
+            
             dsc.Show();
         }
 
         private void bANGLAToolStripMenuItem_Click(object sender, EventArgs e)
         {
             disciplineSeniorityChecker dsc = new disciplineSeniorityChecker(19);
-            this.Close();
+            
             dsc.Show();
         }
 
         private void eNGLISHToolStripMenuItem_Click(object sender, EventArgs e)
         {
             disciplineSeniorityChecker dsc = new disciplineSeniorityChecker(14);
-            this.Close();
+            
             dsc.Show();
         }
 
         private void lAWToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             disciplineSeniorityChecker dsc = new disciplineSeniorityChecker(28);
-            this.Close();
+            
             dsc.Show();
         }
     }

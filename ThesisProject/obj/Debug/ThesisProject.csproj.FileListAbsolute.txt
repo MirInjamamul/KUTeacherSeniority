@@ -118,7 +118,6 @@ C:\Users\user\Desktop\KUTeacherSeniority\ThesisProject\obj\Debug\ThesisProject.l
 C:\Users\user\Desktop\KUTeacherSeniority\ThesisProject\obj\Debug\ThesisProject.maleSeniorityCheckerForm.resources
 C:\Users\user\Desktop\KUTeacherSeniority\ThesisProject\obj\Debug\ThesisProject.Properties.Resources.resources
 C:\Users\user\Desktop\KUTeacherSeniority\ThesisProject\obj\Debug\ThesisProject.resetPasswordForm.resources
-C:\Users\user\Desktop\KUTeacherSeniority\ThesisProject\obj\Debug\ThesisProject.schoolDesignationForm.resources
 C:\Users\user\Desktop\KUTeacherSeniority\ThesisProject\obj\Debug\ThesisProject.schoolEntryForm.resources
 C:\Users\user\Desktop\KUTeacherSeniority\ThesisProject\obj\Debug\ThesisProject.schoolSeniorityCheckerForm.resources
 C:\Users\user\Desktop\KUTeacherSeniority\ThesisProject\obj\Debug\ThesisProject.teacherEntryForm.resources

@@ -125,12 +125,6 @@
     <Compile Include="resetPasswordForm.Designer.cs">
       <DependentUpon>resetPasswordForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="schoolDesignationForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="schoolDesignationForm.Designer.cs">
-      <DependentUpon>schoolDesignationForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="schoolEntryForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -199,9 +193,6 @@
     </Compile>
     <EmbeddedResource Include="resetPasswordForm.resx">
       <DependentUpon>resetPasswordForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="schoolDesignationForm.resx">
-      <DependentUpon>schoolDesignationForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="schoolEntryForm.resx">
       <DependentUpon>schoolEntryForm.cs</DependentUpon>

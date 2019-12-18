@@ -54,15 +54,15 @@ namespace ThesisProject
             worksheet.Cells[headerRange].LoadFromArrays(headerRow);
 
 
-            professorGradeOneSeniorityCheck(); 
+            professorGradeOneSeniorityCheck();
 
-            professorGradeTwoSeniorityCheck(); 
+            professorGradeTwoSeniorityCheck();
 
             professorGradeThreeSeniorityCheck(); 
 
             assosciateProfessorSeniorityCheck();  
 
-            assistantProfessorSeniorityCheck();  
+            assistantProfessorSeniorityCheck();   
 
             lecturerSeniorityScheck(); 
 
@@ -326,10 +326,6 @@ namespace ThesisProject
             
         }
 
-        private void tiebreaker()
-        {
-           
-        }
 
         private void assistantProfessorSeniorityCheck()
         {
@@ -741,10 +737,7 @@ namespace ThesisProject
                     for (i = 0; i < val; i++)
                     {
                         int j = i + 1;
-                        if (teacherCount[i] == 0)
-                        {
-                            break;
-                        }
+                        
 
                         cmd = new SqlCommand();
                         cmd = connection.CreateCommand();
@@ -762,14 +755,8 @@ namespace ThesisProject
                         connection.CloseConnection();
 
 
-                        cmd = new SqlCommand();
-                        cmd = connection.CreateCommand();
-                        cmd.CommandText = "Select current_designation From joining where teacher_id = '" + teacherCount[i] + "'";
-                        connection.OpenConection();
-                        int flag = (int)cmd.ExecuteScalar();
-                        connection.CloseConnection();
-
-                        if (teacherCount[i] != 0 && flag == 1)
+                        
+                        if (teacherCount[i] != 0)
                         {
 
                             celldata.Add(new string[] { "" + ranking, "" + teacher_name, "" + discipline_name, "Associate Professor" });
@@ -996,10 +983,7 @@ namespace ThesisProject
                     for (i = 0; i < val; i++)
                     {
                         int j = i + 1;
-                        if (teacherCount[i] == 0)
-                        {
-                            break;
-                        }
+                       
 
                         cmd = new SqlCommand();
                         cmd = connection.CreateCommand();
@@ -1015,14 +999,7 @@ namespace ThesisProject
                         string discipline_name = (string)cmd.ExecuteScalar();
                         connection.CloseConnection();
 
-                        cmd = new SqlCommand();
-                        cmd = connection.CreateCommand();
-                        cmd.CommandText = "Select current_designation From joining where teacher_id = '" + teacherCount[i] + "'";
-                        connection.OpenConection();
-                        int flag = (int)cmd.ExecuteScalar();
-                        connection.CloseConnection();
-
-                        if (teacherCount[i] != 0 && flag == 1)
+                        if (teacherCount[i] != 0 )
                         {
 
                             celldata.Add(new string[] { "" + ranking, "" + teacher_name, "" + discipline_name, "Professor (Grade 3)" });
@@ -1250,10 +1227,7 @@ namespace ThesisProject
                     for (i = 0; i < val; i++)
                     {
                         int j = i + 1;
-                        if (teacherCount[i] == 0)
-                        {
-                            break;
-                        }
+                        
                         cmd = new SqlCommand();
                         cmd = connection.CreateCommand();
                         cmd.CommandText = "Select name From info where Id = '" + teacherCount[i] + "'";
@@ -1269,14 +1243,9 @@ namespace ThesisProject
                         string discipline_name = (string)cmd.ExecuteScalar();
                         connection.CloseConnection();
 
-                        cmd = new SqlCommand();
-                        cmd = connection.CreateCommand();
-                        cmd.CommandText = "Select current_designation From joining where teacher_id = '" + teacherCount[i] + "'";
-                        connection.OpenConection();
-                        int flag = (int)cmd.ExecuteScalar();
-                        connection.CloseConnection();
+                       
 
-                        if (teacherCount[i] != 0 && flag == 1)
+                        if (teacherCount[i] != 0)
                         {
 
                             celldata.Add(new string[] { "" + ranking, "" + teacher_name, "" + discipline_name, "Professor (Grade 2)" });
