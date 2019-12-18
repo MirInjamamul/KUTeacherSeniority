@@ -16,6 +16,7 @@ namespace ThesisProject
         //SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\user\Desktop\ThesisProject\database.mdf;Integrated Security=True;Connect Timeout=30");
         
         connection connection = new connection();
+        private SqlCommand cmd;
 
         public Form1()
         {
@@ -59,7 +60,14 @@ namespace ThesisProject
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            cmd = new SqlCommand();
+            cmd = connection.CreateCommand();
 
+            cmd.CommandText = "delete from ranking";
+
+            connection.OpenConection();
+            cmd.ExecuteNonQuery();
+            connection.CloseConnection();
         }
 
         private void label3_Click(object sender, EventArgs e)

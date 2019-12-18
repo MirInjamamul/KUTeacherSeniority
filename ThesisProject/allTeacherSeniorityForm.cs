@@ -1,9 +1,11 @@
-﻿using System;
+﻿using OfficeOpenXml;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,10 +19,15 @@ namespace ThesisProject
         SqlDataAdapter da;
         DataTable dt;
 
+        ExcelPackage excel = new ExcelPackage();
+        List<string[]> celldata = new List<string[]>();
+        ExcelWorksheet worksheet;
+
         string name = "";
         int[] activeCount = new int[500];
         int[] teacherCount = new int[500];
         int count = 0;
+        int ranking = 1; 
         public allTeacherSeniorityForm()
         {
             InitializeComponent();
@@ -28,6 +35,24 @@ namespace ThesisProject
 
         private void allTeacherSeniorityForm_Load(object sender, EventArgs e)
         {
+            //celldata = new List<string[]>() { };
+
+            excel.Workbook.Worksheets.Add("Worksheet1");
+
+            var headerRow = new List<string[]>()
+            {
+                new string[] { "Ranking", "Teacher Name","Discipline", "Designation"}
+            };
+
+            // Determine the header range (e.g. A1:D1)
+            string headerRange = "A1:" + Char.ConvertFromUtf32(headerRow[0].Length + 64) + "1";
+
+            // Target a worksheet
+            worksheet = excel.Workbook.Worksheets["Worksheet1"];
+
+            // Popular header row data
+            worksheet.Cells[headerRange].LoadFromArrays(headerRow);
+
 
             professorGradeOneSeniorityCheck(); 
 
@@ -39,7 +64,7 @@ namespace ThesisProject
 
             assistantProfessorSeniorityCheck();  
 
-            lecturerSeniorityScheck();
+            lecturerSeniorityScheck(); 
 
                 
         }
@@ -85,8 +110,7 @@ namespace ThesisProject
 
                             activeCount[count] = active - current_leave - total_leave;
                             teacherCount[count] = teacher_id;
-                            System.Console.WriteLine("name : " + name + " Active : " + active + "teacher_id" + teacherCount[count]);
-
+                            
                             count++;
                         }
                         connection.CloseConnection();
@@ -202,12 +226,56 @@ namespace ThesisProject
                     for (i = 0; i < val; i++)
                     {
                         int j = i + 1;
+                        
+                        cmd = new SqlCommand();
+                        cmd = connection.CreateCommand();
+                        cmd.CommandText = "Select name From info where Id = '"+teacherCount[i]+"'";
+                        connection.OpenConection();
+                        string teacher_name = (string)cmd.ExecuteScalar();
+                        connection.CloseConnection();
 
+                        cmd = new SqlCommand();
+                        cmd = connection.CreateCommand();
+                        cmd.CommandText = "Select discipline_name From info,discipline where Id = '" + teacherCount[i] + "' AND discipline = discipline_id";
+                        connection.OpenConection();
+                        string discipline_name = (string)cmd.ExecuteScalar();
+                        connection.CloseConnection();
+
+                        int flag = 0;
+                        if (teacherCount[i]!=0)
+                        {
+                            cmd = new SqlCommand();
+                            cmd = connection.CreateCommand();
+                            cmd.CommandText = "Select current_designation From joining where teacher_id = '" + teacherCount[i] + "'";
+                            connection.OpenConection();
+                            flag = (int)cmd.ExecuteScalar();
+                            connection.CloseConnection();
+                        }
+                        
+
+                        if (teacherCount[i] != 0 && flag ==1)
+                        {
+                            
+                            celldata.Add(new string[] { "" + ranking, "" + teacher_name,""+discipline_name, "Lecturer" });
+                            ranking++;
+                        }
+
+                        cmd = new SqlCommand();
+                        cmd = connection.CreateCommand();
                         cmd.CommandText = "Insert into ranking(id,teacher_id,count) values ('" + j + "', '" + teacherCount[i] + "' , '" + activeCount[i] + "')";
+
+
                         connection.OpenConection();
                         cmd.ExecuteNonQuery();
                         connection.CloseConnection();
+                        
                     }
+
+                    worksheet.Cells[2, 1].LoadFromArrays(celldata);
+
+                    FileInfo excelFile = new FileInfo(@"D:\test.xlsx");
+                    excel.SaveAs(excelFile);
+
 
                     cmd = new SqlCommand();
                     cmd = connection.CreateCommand();
@@ -423,6 +491,30 @@ namespace ThesisProject
                     for (i = 0; i < val; i++)
                     {
                         int j = i + 1;
+
+                        
+                        cmd = new SqlCommand();
+                        cmd = connection.CreateCommand();
+                        cmd.CommandText = "Select name From info where Id = '" + teacherCount[i] + "'";
+                        connection.OpenConection();
+                        string teacher_name = (string)cmd.ExecuteScalar();
+                        connection.CloseConnection();
+
+                        cmd = new SqlCommand();
+                        cmd = connection.CreateCommand();
+                        cmd.CommandText = "Select discipline_name From info,discipline where Id = '" + teacherCount[i] + "' AND discipline = discipline_id";
+                        connection.OpenConection();
+                        string discipline_name = (string)cmd.ExecuteScalar();
+                        connection.CloseConnection();
+
+                        
+
+                        if (teacherCount[i] != 0 )
+                        {
+
+                            celldata.Add(new string[] { "" + ranking, "" + teacher_name, "" + discipline_name, "Assistant Professor" });
+                            ranking++;
+                        }
 
                         cmd.CommandText = "Insert into ranking(id,teacher_id,count) values ('" + j + "', '" + teacherCount[i] + "' , '" + activeCount[i] + "')";
                         connection.OpenConection();
@@ -643,7 +735,40 @@ namespace ThesisProject
                     for (i = 0; i < val; i++)
                     {
                         int j = i + 1;
+                        if (teacherCount[i] == 0)
+                        {
+                            break;
+                        }
 
+                        cmd = new SqlCommand();
+                        cmd = connection.CreateCommand();
+                        cmd.CommandText = "Select name From info where Id = '" + teacherCount[i] + "'";
+                        connection.OpenConection();
+                        string teacher_name = (string)cmd.ExecuteScalar();
+                        connection.CloseConnection();
+
+
+                        cmd = new SqlCommand();
+                        cmd = connection.CreateCommand();
+                        cmd.CommandText = "Select discipline_name From info,discipline where Id = '" + teacherCount[i] + "' AND discipline = discipline_id";
+                        connection.OpenConection();
+                        string discipline_name = (string)cmd.ExecuteScalar();
+                        connection.CloseConnection();
+
+
+                        cmd = new SqlCommand();
+                        cmd = connection.CreateCommand();
+                        cmd.CommandText = "Select current_designation From joining where teacher_id = '" + teacherCount[i] + "'";
+                        connection.OpenConection();
+                        int flag = (int)cmd.ExecuteScalar();
+                        connection.CloseConnection();
+
+                        if (teacherCount[i] != 0 && flag == 1)
+                        {
+
+                            celldata.Add(new string[] { "" + ranking, "" + teacher_name, "" + discipline_name, "Associate Professor" });
+                            ranking++;
+                        }
                         cmd.CommandText = "Insert into ranking(id,teacher_id,count) values ('" + j + "', '" + teacherCount[i] + "' , '" + activeCount[i] + "')";
                         connection.OpenConection();
                         cmd.ExecuteNonQuery();
@@ -863,7 +988,38 @@ namespace ThesisProject
                     for (i = 0; i < val; i++)
                     {
                         int j = i + 1;
+                        if (teacherCount[i] == 0)
+                        {
+                            break;
+                        }
 
+                        cmd = new SqlCommand();
+                        cmd = connection.CreateCommand();
+                        cmd.CommandText = "Select name From info where Id = '" + teacherCount[i] + "'";
+                        connection.OpenConection();
+                        string teacher_name = (string)cmd.ExecuteScalar();
+                        connection.CloseConnection();
+
+                        cmd = new SqlCommand();
+                        cmd = connection.CreateCommand();
+                        cmd.CommandText = "Select discipline_name From info,discipline where Id = '" + teacherCount[i] + "' AND discipline = discipline_id";
+                        connection.OpenConection();
+                        string discipline_name = (string)cmd.ExecuteScalar();
+                        connection.CloseConnection();
+
+                        cmd = new SqlCommand();
+                        cmd = connection.CreateCommand();
+                        cmd.CommandText = "Select current_designation From joining where teacher_id = '" + teacherCount[i] + "'";
+                        connection.OpenConection();
+                        int flag = (int)cmd.ExecuteScalar();
+                        connection.CloseConnection();
+
+                        if (teacherCount[i] != 0 && flag == 1)
+                        {
+
+                            celldata.Add(new string[] { "" + ranking, "" + teacher_name, "" + discipline_name, "Professor (Grade 3)" });
+                            ranking++;
+                        }
                         cmd.CommandText = "Insert into ranking(id,teacher_id,count) values ('" + j + "', '" + teacherCount[i] + "' , '" + activeCount[i] + "')";
                         connection.OpenConection();
                         cmd.ExecuteNonQuery();
@@ -1039,6 +1195,7 @@ namespace ThesisProject
                                         count++;
                                     }
                                     connection.CloseConnection();
+
                                     connection.OpenConection();
                                     cmd = new SqlCommand();
                                     cmd = connection.CreateCommand();
@@ -1083,7 +1240,38 @@ namespace ThesisProject
                     for (i = 0; i < val; i++)
                     {
                         int j = i + 1;
+                        if (teacherCount[i] == 0)
+                        {
+                            break;
+                        }
+                        cmd = new SqlCommand();
+                        cmd = connection.CreateCommand();
+                        cmd.CommandText = "Select name From info where Id = '" + teacherCount[i] + "'";
+                        connection.OpenConection();
+                        string teacher_name = (string)cmd.ExecuteScalar();
+                        connection.CloseConnection();
 
+
+                        cmd = new SqlCommand();
+                        cmd = connection.CreateCommand();
+                        cmd.CommandText = "Select discipline_name From info,discipline where Id = '" + teacherCount[i] + "' AND discipline = discipline_id";
+                        connection.OpenConection();
+                        string discipline_name = (string)cmd.ExecuteScalar();
+                        connection.CloseConnection();
+
+                        cmd = new SqlCommand();
+                        cmd = connection.CreateCommand();
+                        cmd.CommandText = "Select current_designation From joining where teacher_id = '" + teacherCount[i] + "'";
+                        connection.OpenConection();
+                        int flag = (int)cmd.ExecuteScalar();
+                        connection.CloseConnection();
+
+                        if (teacherCount[i] != 0 && flag == 1)
+                        {
+
+                            celldata.Add(new string[] { "" + ranking, "" + teacher_name, "" + discipline_name, "Professor (Grade 2)" });
+                            ranking++;
+                        }
                         cmd.CommandText = "Insert into ranking(id,teacher_id,count) values ('" + j + "', '" + teacherCount[i] + "' , '" + activeCount[i] + "')";
                         connection.OpenConection();
                         cmd.ExecuteNonQuery();
@@ -1179,8 +1367,7 @@ namespace ThesisProject
 
                             activeCount[count] = active - current_leave - total_leave;
                             teacherCount[count] = teacher_id;
-                            System.Console.WriteLine("name : " + name + " Active : " + active + "teacher_id" + teacherCount[count]);
-
+                            
                             count++;
                         }
                         connection.CloseConnection();
@@ -1299,7 +1486,41 @@ namespace ThesisProject
                     for (i = 0; i < val; i++)
                     {
                         int j = i + 1;
+                        if (teacherCount[i] == 0)
+                        {
+                            break;
+                        }
+                        cmd = new SqlCommand();
+                        cmd = connection.CreateCommand();
+                        cmd.CommandText = "Select name From info where Id = '" + teacherCount[i] + "'";
+                        connection.OpenConection();
+                        string teacher_name = (string)cmd.ExecuteScalar();
+                        connection.CloseConnection();
 
+
+                        cmd = new SqlCommand();
+                        cmd = connection.CreateCommand();
+                        cmd.CommandText = "Select discipline_name From info,discipline where Id = '" + teacherCount[i] + "' AND discipline = discipline_id";
+                        connection.OpenConection();
+                        string discipline_name = (string)cmd.ExecuteScalar();
+                        connection.CloseConnection();
+
+
+                        /*    cmd = new SqlCommand();
+                            cmd = connection.CreateCommand();
+                            cmd.CommandText = "Select current_designation From joining where teacher_id = '" + teacherCount[i] + "'";
+                            connection.OpenConection();
+                            int flag = (int)cmd.ExecuteScalar();
+                            connection.CloseConnection();*/
+                        int flag = 1;
+                        if (teacherCount[i] != 0 && flag == 1)
+                        {
+                            celldata.Add(new string[] { "" + ranking, "" + teacher_name, "" + discipline_name, "Professor (Grade 1)" });
+                            ranking++;
+                        }
+
+                        cmd = new SqlCommand();
+                        cmd = connection.CreateCommand();
                         cmd.CommandText = "Insert into ranking(id,teacher_id,count) values ('" + j + "', '" + teacherCount[i] + "' , '" + activeCount[i] + "')";
                         connection.OpenConection();
                         cmd.ExecuteNonQuery();
@@ -1352,6 +1573,11 @@ namespace ThesisProject
             }
 
             
+        }
+
+        private void dataGridView5_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

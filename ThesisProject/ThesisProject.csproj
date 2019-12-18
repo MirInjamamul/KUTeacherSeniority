@@ -32,8 +32,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EPPlus, Version=4.5.3.2, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.4.5.3.2\lib\net40\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -74,6 +80,12 @@
     </Compile>
     <Compile Include="disciplineEntryForm.Designer.cs">
       <DependentUpon>disciplineEntryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="disciplineSeniorityChecker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="disciplineSeniorityChecker.Designer.cs">
+      <DependentUpon>disciplineSeniorityChecker.cs</DependentUpon>
     </Compile>
     <Compile Include="femaleSeniorityCheckerForm.cs">
       <SubType>Form</SubType>
@@ -158,6 +170,9 @@
     <EmbeddedResource Include="disciplineEntryForm.resx">
       <DependentUpon>disciplineEntryForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="disciplineSeniorityChecker.resx">
+      <DependentUpon>disciplineSeniorityChecker.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="femaleSeniorityCheckerForm.resx">
       <DependentUpon>femaleSeniorityCheckerForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -200,6 +215,7 @@
     <EmbeddedResource Include="teacherPromotionDateForm.resx">
       <DependentUpon>teacherPromotionDateForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -95,3 +95,7 @@ C:\Users\ASUS\Desktop\Newfolder(3)\KUTeacherSeniority\ThesisProject\obj\Debug\Th
 C:\Users\ASUS\Desktop\Newfolder(3)\KUTeacherSeniority\ThesisProject\bin\Debug\ThesisProject.exe.config
 C:\Users\ASUS\Desktop\Newfolder(3)\KUTeacherSeniority\ThesisProject\bin\Debug\ThesisProject.exe
 C:\Users\ASUS\Desktop\Newfolder(3)\KUTeacherSeniority\ThesisProject\bin\Debug\ThesisProject.pdb
+C:\Users\ASUS\Desktop\Newfolder(3)\KUTeacherSeniority\ThesisProject\obj\Debug\ThesisProject.disciplineSeniorityChecker.resources
+C:\Users\ASUS\Desktop\Newfolder(3)\KUTeacherSeniority\ThesisProject\bin\Debug\EPPlus.dll
+C:\Users\ASUS\Desktop\Newfolder(3)\KUTeacherSeniority\ThesisProject\bin\Debug\EPPlus.xml
+C:\Users\ASUS\Desktop\Newfolder(3)\KUTeacherSeniority\ThesisProject\obj\Debug\ThesisProject.csproj.CopyComplete

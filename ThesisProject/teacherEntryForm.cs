@@ -116,10 +116,498 @@ namespace ThesisProject
             int discipline_id = (int)cmd.ExecuteScalar();
             connection.CloseConnection();
 
-            connection.OpenConection();
-            cmd.CommandText = "insert into [info] (name,designation,discipline,school,gender,highest_degree,date_of_birth) values ('" + teacherNameTxt.Text + "','" + designation_id + "','" + discipline_id + "','" + school_id + "','" + gender + "','" + degree_name + "','" + dateTimePicker1.Text + "')";
-            cmd.ExecuteNonQuery();
-            connection.CloseConnection();
+            int teacher_id;
+
+            if (designation_id == 6)
+            {
+                connection.OpenConection();
+                cmd = new SqlCommand();
+                cmd = connection.CreateCommand();
+                cmd.CommandText = "insert into [info] (name,designation,discipline,school,gender,highest_degree,date_of_birth) values ('" + teacherNameTxt.Text + "','1','" + discipline_id + "','" + school_id + "','" + gender + "','" + degree_name + "','" + dateTimePicker1.Text + "')";
+                cmd.ExecuteNonQuery();
+                connection.CloseConnection();
+
+                connection.OpenConection();
+                cmd = connection.CreateCommand();
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = "Select id from info where name = '" + teacherNameTxt.Text + "'";
+                int teacher_id1 = (int)cmd.ExecuteScalar();
+                connection.CloseConnection();
+
+                connection.OpenConection();
+
+                cmd = connection.CreateCommand();
+                cmd.CommandText = "insert into [joining] (teacher_id,designation_id,current_designation,joining_date,total_leave,current_leave,active) values ('" + teacher_id1 + "','" + designation_id + "','1','" + joiningdateTimePicker.Text + "','0','0','0')";
+                cmd.ExecuteNonQuery();
+                connection.CloseConnection();
+
+                //
+
+                connection.OpenConection();
+                cmd = new SqlCommand();
+                cmd = connection.CreateCommand();
+                cmd.CommandText = "Update info Set designation = '2' Where Id = '" + teacher_id1 + "'";
+
+                cmd.ExecuteNonQuery();
+                connection.CloseConnection();
+
+                connection.OpenConection();
+                cmd = connection.CreateCommand();
+                cmd.CommandText = "Update joining Set current_designation = '0' Where teacher_id = '" + teacher_id1 + "'";
+
+                cmd.ExecuteNonQuery();
+                connection.CloseConnection();
+
+                connection.OpenConection();
+                cmd = connection.CreateCommand();
+                cmd.CommandText = "insert into [joining] (teacher_id,designation_id,current_designation,joining_date,total_leave,current_leave,active) values ('" + teacher_id1 + "','2','1','" + joiningdateTimePicker.Text + "','0','0','0')";
+
+                cmd.ExecuteNonQuery();
+                connection.CloseConnection();
+
+                //
+
+                connection.OpenConection();
+                cmd = new SqlCommand();
+                cmd = connection.CreateCommand();
+                cmd.CommandText = "Update info Set designation = '3' Where Id = '" + teacher_id1 + "'";
+
+                cmd.ExecuteNonQuery();
+                connection.CloseConnection();
+
+                connection.OpenConection();
+                cmd = connection.CreateCommand();
+                cmd.CommandText = "Update joining Set current_designation = '0' Where teacher_id = '" + teacher_id1 + "'";
+
+                cmd.ExecuteNonQuery();
+                connection.CloseConnection();
+
+                connection.OpenConection();
+                cmd = connection.CreateCommand();
+                cmd.CommandText = "insert into [joining] (teacher_id,designation_id,current_designation,joining_date,total_leave,current_leave,active) values ('" + teacher_id1 + "','3','1','" + joiningdateTimePicker.Text + "','0','0','0')";
+
+                cmd.ExecuteNonQuery();
+                connection.CloseConnection();
+
+                connection.OpenConection();
+                cmd = new SqlCommand();
+                cmd = connection.CreateCommand();
+                cmd.CommandText = "Update info Set designation = '4' Where Id = '" + teacher_id1 + "'";
+
+                cmd.ExecuteNonQuery();
+                connection.CloseConnection();
+
+                connection.OpenConection();
+                cmd = connection.CreateCommand();
+                cmd.CommandText = "Update joining Set current_designation = '0' Where teacher_id = '" + teacher_id1 + "'";
+
+                cmd.ExecuteNonQuery();
+                connection.CloseConnection();
+
+                connection.OpenConection();
+                cmd = connection.CreateCommand();
+                cmd.CommandText = "insert into [joining] (teacher_id,designation_id,current_designation,joining_date,total_leave,current_leave,active) values ('" + teacher_id1 + "','4','1','" + joiningdateTimePicker.Text + "','0','0','0')";
+
+                cmd.ExecuteNonQuery();
+                connection.CloseConnection();
+
+                connection.OpenConection();
+                cmd = new SqlCommand();
+                cmd = connection.CreateCommand();
+                cmd.CommandText = "Update info Set designation = '5' Where Id = '" + teacher_id1 + "'";
+
+                cmd.ExecuteNonQuery();
+                connection.CloseConnection();
+
+                connection.OpenConection();
+                cmd = connection.CreateCommand();
+                cmd.CommandText = "Update joining Set current_designation = '0' Where teacher_id = '" + teacher_id1 + "'";
+
+                cmd.ExecuteNonQuery();
+                connection.CloseConnection();
+
+                connection.OpenConection();
+                cmd = connection.CreateCommand();
+                cmd.CommandText = "insert into [joining] (teacher_id,designation_id,current_designation,joining_date,total_leave,current_leave,active) values ('" + teacher_id1 + "','5','1','" + joiningdateTimePicker.Text + "','0','0','0')";
+
+                cmd.ExecuteNonQuery();
+                connection.CloseConnection();
+
+                connection.OpenConection();
+                cmd = new SqlCommand();
+                cmd = connection.CreateCommand();
+                cmd.CommandText = "Update info Set designation = '6' Where Id = '" + teacher_id1 + "'";
+
+                cmd.ExecuteNonQuery();
+                connection.CloseConnection();
+
+                connection.OpenConection();
+                cmd = connection.CreateCommand();
+                cmd.CommandText = "Update joining Set current_designation = '0' Where teacher_id = '" + teacher_id1 + "'";
+
+                cmd.ExecuteNonQuery();
+                connection.CloseConnection();
+
+                connection.OpenConection();
+                cmd = connection.CreateCommand();
+                cmd.CommandText = "insert into [joining] (teacher_id,designation_id,current_designation,joining_date,total_leave,current_leave,active) values ('" + teacher_id1 + "','6','1','" + joiningdateTimePicker.Text + "','0','0','0')";
+
+                cmd.ExecuteNonQuery();
+                connection.CloseConnection();
+            }
+
+            if (designation_id == 5)
+            {
+                connection.OpenConection();
+                cmd = new SqlCommand();
+                cmd = connection.CreateCommand();
+                cmd.CommandText = "insert into [info] (name,designation,discipline,school,gender,highest_degree,date_of_birth) values ('" + teacherNameTxt.Text + "','1','" + discipline_id + "','" + school_id + "','" + gender + "','" + degree_name + "','" + dateTimePicker1.Text + "')";
+                cmd.ExecuteNonQuery();
+                connection.CloseConnection();
+
+                connection.OpenConection();
+                cmd = connection.CreateCommand();
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = "Select id from info where name = '" + teacherNameTxt.Text + "'";
+                int teacher_id1 = (int)cmd.ExecuteScalar();
+                connection.CloseConnection();
+
+                connection.OpenConection();
+
+                cmd = connection.CreateCommand();
+                cmd.CommandText = "insert into [joining] (teacher_id,designation_id,current_designation,joining_date,total_leave,current_leave,active) values ('" + teacher_id1 + "','" + designation_id + "','1','" + joiningdateTimePicker.Text + "','0','0','0')";
+                cmd.ExecuteNonQuery();
+                connection.CloseConnection();
+
+                //
+
+                connection.OpenConection();
+                cmd = new SqlCommand();
+                cmd = connection.CreateCommand();
+                cmd.CommandText = "Update info Set designation = '2' Where Id = '" + teacher_id1 + "'";
+
+                cmd.ExecuteNonQuery();
+                connection.CloseConnection();
+
+                connection.OpenConection();
+                cmd = connection.CreateCommand();
+                cmd.CommandText = "Update joining Set current_designation = '0' Where teacher_id = '" + teacher_id1 + "'";
+
+                cmd.ExecuteNonQuery();
+                connection.CloseConnection();
+
+                connection.OpenConection();
+                cmd = connection.CreateCommand();
+                cmd.CommandText = "insert into [joining] (teacher_id,designation_id,current_designation,joining_date,total_leave,current_leave,active) values ('" + teacher_id1 + "','2','1','" + joiningdateTimePicker.Text + "','0','0','0')";
+
+                cmd.ExecuteNonQuery();
+                connection.CloseConnection();
+
+                //
+
+                connection.OpenConection();
+                cmd = new SqlCommand();
+                cmd = connection.CreateCommand();
+                cmd.CommandText = "Update info Set designation = '3' Where Id = '" + teacher_id1 + "'";
+
+                cmd.ExecuteNonQuery();
+                connection.CloseConnection();
+
+                connection.OpenConection();
+                cmd = connection.CreateCommand();
+                cmd.CommandText = "Update joining Set current_designation = '0' Where teacher_id = '" + teacher_id1 + "'";
+
+                cmd.ExecuteNonQuery();
+                connection.CloseConnection();
+
+                connection.OpenConection();
+                cmd = connection.CreateCommand();
+                cmd.CommandText = "insert into [joining] (teacher_id,designation_id,current_designation,joining_date,total_leave,current_leave,active) values ('" + teacher_id1 + "','3','1','" + joiningdateTimePicker.Text + "','0','0','0')";
+
+                cmd.ExecuteNonQuery();
+                connection.CloseConnection();
+
+                connection.OpenConection();
+                cmd = new SqlCommand();
+                cmd = connection.CreateCommand();
+                cmd.CommandText = "Update info Set designation = '4' Where Id = '" + teacher_id1 + "'";
+
+                cmd.ExecuteNonQuery();
+                connection.CloseConnection();
+
+                connection.OpenConection();
+                cmd = connection.CreateCommand();
+                cmd.CommandText = "Update joining Set current_designation = '0' Where teacher_id = '" + teacher_id1 + "'";
+
+                cmd.ExecuteNonQuery();
+                connection.CloseConnection();
+
+                connection.OpenConection();
+                cmd = connection.CreateCommand();
+                cmd.CommandText = "insert into [joining] (teacher_id,designation_id,current_designation,joining_date,total_leave,current_leave,active) values ('" + teacher_id1 + "','4','1','" + joiningdateTimePicker.Text + "','0','0','0')";
+
+                cmd.ExecuteNonQuery();
+                connection.CloseConnection();
+
+                connection.OpenConection();
+                cmd = new SqlCommand();
+                cmd = connection.CreateCommand();
+                cmd.CommandText = "Update info Set designation = '5' Where Id = '" + teacher_id1 + "'";
+
+                cmd.ExecuteNonQuery();
+                connection.CloseConnection();
+
+                connection.OpenConection();
+                cmd = connection.CreateCommand();
+                cmd.CommandText = "Update joining Set current_designation = '0' Where teacher_id = '" + teacher_id1 + "'";
+
+                cmd.ExecuteNonQuery();
+                connection.CloseConnection();
+
+                connection.OpenConection();
+                cmd = connection.CreateCommand();
+                cmd.CommandText = "insert into [joining] (teacher_id,designation_id,current_designation,joining_date,total_leave,current_leave,active) values ('" + teacher_id1 + "','5','1','" + joiningdateTimePicker.Text + "','0','0','0')";
+
+                cmd.ExecuteNonQuery();
+                connection.CloseConnection();
+            }
+
+            if (designation_id == 4)
+            {
+                connection.OpenConection();
+                cmd = new SqlCommand();
+                cmd = connection.CreateCommand();
+                cmd.CommandText = "insert into [info] (name,designation,discipline,school,gender,highest_degree,date_of_birth) values ('" + teacherNameTxt.Text + "','1','" + discipline_id + "','" + school_id + "','" + gender + "','" + degree_name + "','" + dateTimePicker1.Text + "')";
+                cmd.ExecuteNonQuery();
+                connection.CloseConnection();
+
+                connection.OpenConection();
+                cmd = connection.CreateCommand();
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = "Select id from info where name = '" + teacherNameTxt.Text + "'";
+                int teacher_id1 = (int)cmd.ExecuteScalar();
+                connection.CloseConnection();
+
+                connection.OpenConection();
+
+                cmd = connection.CreateCommand();
+                cmd.CommandText = "insert into [joining] (teacher_id,designation_id,current_designation,joining_date,total_leave,current_leave,active) values ('" + teacher_id1 + "','" + designation_id + "','1','" + joiningdateTimePicker.Text + "','0','0','0')";
+                cmd.ExecuteNonQuery();
+                connection.CloseConnection();
+
+                //
+
+                connection.OpenConection();
+                cmd = new SqlCommand();
+                cmd = connection.CreateCommand();
+                cmd.CommandText = "Update info Set designation = '2' Where Id = '" + teacher_id1 + "'";
+
+                cmd.ExecuteNonQuery();
+                connection.CloseConnection();
+
+                connection.OpenConection();
+                cmd = connection.CreateCommand();
+                cmd.CommandText = "Update joining Set current_designation = '0' Where teacher_id = '" + teacher_id1 + "'";
+
+                cmd.ExecuteNonQuery();
+                connection.CloseConnection();
+
+                connection.OpenConection();
+                cmd = connection.CreateCommand();
+                cmd.CommandText = "insert into [joining] (teacher_id,designation_id,current_designation,joining_date,total_leave,current_leave,active) values ('" + teacher_id1 + "','2','1','" + joiningdateTimePicker.Text + "','0','0','0')";
+
+                cmd.ExecuteNonQuery();
+                connection.CloseConnection();
+
+                //
+
+                connection.OpenConection();
+                cmd = new SqlCommand();
+                cmd = connection.CreateCommand();
+                cmd.CommandText = "Update info Set designation = '3' Where Id = '" + teacher_id1 + "'";
+
+                cmd.ExecuteNonQuery();
+                connection.CloseConnection();
+
+                connection.OpenConection();
+                cmd = connection.CreateCommand();
+                cmd.CommandText = "Update joining Set current_designation = '0' Where teacher_id = '" + teacher_id1 + "'";
+
+                cmd.ExecuteNonQuery();
+                connection.CloseConnection();
+
+                connection.OpenConection();
+                cmd = connection.CreateCommand();
+                cmd.CommandText = "insert into [joining] (teacher_id,designation_id,current_designation,joining_date,total_leave,current_leave,active) values ('" + teacher_id1 + "','3','1','" + joiningdateTimePicker.Text + "','0','0','0')";
+
+                cmd.ExecuteNonQuery();
+                connection.CloseConnection();
+
+                connection.OpenConection();
+                cmd = new SqlCommand();
+                cmd = connection.CreateCommand();
+                cmd.CommandText = "Update info Set designation = '4' Where Id = '" + teacher_id1 + "'";
+
+                cmd.ExecuteNonQuery();
+                connection.CloseConnection();
+
+                connection.OpenConection();
+                cmd = connection.CreateCommand();
+                cmd.CommandText = "Update joining Set current_designation = '0' Where teacher_id = '" + teacher_id1 + "'";
+
+                cmd.ExecuteNonQuery();
+                connection.CloseConnection();
+
+                connection.OpenConection();
+                cmd = connection.CreateCommand();
+                cmd.CommandText = "insert into [joining] (teacher_id,designation_id,current_designation,joining_date,total_leave,current_leave,active) values ('" + teacher_id1 + "','4','1','" + joiningdateTimePicker.Text + "','0','0','0')";
+
+                cmd.ExecuteNonQuery();
+                connection.CloseConnection();
+            }
+
+            if (designation_id == 3)
+            {
+                connection.OpenConection();
+                cmd = new SqlCommand();
+                cmd = connection.CreateCommand();
+                cmd.CommandText = "insert into [info] (name,designation,discipline,school,gender,highest_degree,date_of_birth) values ('" + teacherNameTxt.Text + "','1','" + discipline_id + "','" + school_id + "','" + gender + "','" + degree_name + "','" + dateTimePicker1.Text + "')";
+                cmd.ExecuteNonQuery();
+                connection.CloseConnection();
+
+                connection.OpenConection();
+                cmd = connection.CreateCommand();
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = "Select id from info where name = '" + teacherNameTxt.Text + "'";
+                int teacher_id1 = (int)cmd.ExecuteScalar();
+                connection.CloseConnection();
+
+                connection.OpenConection();
+
+                cmd = connection.CreateCommand();
+                cmd.CommandText = "insert into [joining] (teacher_id,designation_id,current_designation,joining_date,total_leave,current_leave,active) values ('" + teacher_id1 + "','" + designation_id + "','1','" + joiningdateTimePicker.Text + "','0','0','0')";
+                cmd.ExecuteNonQuery();
+                connection.CloseConnection();
+
+                //
+
+                connection.OpenConection();
+                cmd = new SqlCommand();
+                cmd = connection.CreateCommand();
+                cmd.CommandText = "Update info Set designation = '2' Where Id = '" + teacher_id1 + "'";
+
+                cmd.ExecuteNonQuery();
+                connection.CloseConnection();
+
+                connection.OpenConection();
+                cmd = connection.CreateCommand();
+                cmd.CommandText = "Update joining Set current_designation = '0' Where teacher_id = '" + teacher_id1 + "'";
+
+                cmd.ExecuteNonQuery();
+                connection.CloseConnection();
+
+                connection.OpenConection();
+                cmd = connection.CreateCommand();
+                cmd.CommandText = "insert into [joining] (teacher_id,designation_id,current_designation,joining_date,total_leave,current_leave,active) values ('" + teacher_id1 + "','2','1','" + joiningdateTimePicker.Text + "','0','0','0')";
+
+                cmd.ExecuteNonQuery();
+                connection.CloseConnection();
+
+                //
+
+                connection.OpenConection();
+                cmd = new SqlCommand();
+                cmd = connection.CreateCommand();
+                cmd.CommandText = "Update info Set designation = '3' Where Id = '" + teacher_id1 + "'";
+
+                cmd.ExecuteNonQuery();
+                connection.CloseConnection();
+
+                connection.OpenConection();
+                cmd = connection.CreateCommand();
+                cmd.CommandText = "Update joining Set current_designation = '0' Where teacher_id = '" + teacher_id1 + "'";
+
+                cmd.ExecuteNonQuery();
+                connection.CloseConnection();
+
+                connection.OpenConection();
+                cmd = connection.CreateCommand();
+                cmd.CommandText = "insert into [joining] (teacher_id,designation_id,current_designation,joining_date,total_leave,current_leave,active) values ('" + teacher_id1 + "','3','1','" + joiningdateTimePicker.Text + "','0','0','0')";
+
+                cmd.ExecuteNonQuery();
+                connection.CloseConnection();
+            }
+
+            if (designation_id == 2)
+            {
+                connection.OpenConection();
+                cmd = new SqlCommand();
+                cmd = connection.CreateCommand();
+                cmd.CommandText = "insert into [info] (name,designation,discipline,school,gender,highest_degree,date_of_birth) values ('" + teacherNameTxt.Text + "','1','" + discipline_id + "','" + school_id + "','" + gender + "','" + degree_name + "','" + dateTimePicker1.Text + "')";
+                cmd.ExecuteNonQuery();
+                connection.CloseConnection();
+
+                connection.OpenConection();
+                cmd = connection.CreateCommand();
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = "Select id from info where name = '" + teacherNameTxt.Text + "'";
+                int teacher_id1 = (int)cmd.ExecuteScalar();
+                connection.CloseConnection();
+
+                connection.OpenConection();
+
+                cmd = connection.CreateCommand();
+                cmd.CommandText = "insert into [joining] (teacher_id,designation_id,current_designation,joining_date,total_leave,current_leave,active) values ('" + teacher_id1 + "','" + designation_id + "','1','" + joiningdateTimePicker.Text + "','0','0','0')";
+                cmd.ExecuteNonQuery();
+                connection.CloseConnection();
+
+                //
+
+                connection.OpenConection();
+                cmd = new SqlCommand();
+                cmd = connection.CreateCommand();
+                cmd.CommandText = "Update info Set designation = '2' Where Id = '" + teacher_id1 + "'";
+                
+                cmd.ExecuteNonQuery();
+                connection.CloseConnection();
+
+                connection.OpenConection();
+                cmd = connection.CreateCommand();
+                cmd.CommandText = "Update joining Set current_designation = '0' Where teacher_id = '" + teacher_id1 + "'";
+               
+                cmd.ExecuteNonQuery();
+                connection.CloseConnection();
+
+                connection.OpenConection();
+                cmd = connection.CreateCommand();
+                cmd.CommandText = "insert into [joining] (teacher_id,designation_id,current_designation,joining_date,total_leave,current_leave,active) values ('" + teacher_id1 + "','2','1','" + joiningdateTimePicker.Text + "','0','0','0')";
+                
+                cmd.ExecuteNonQuery();
+                connection.CloseConnection();
+                
+            }
+
+            if (designation_id == 1)
+            {
+
+                
+                connection.OpenConection();
+                cmd.CommandText = "insert into [info] (name,designation,discipline,school,gender,highest_degree,date_of_birth) values ('" + teacherNameTxt.Text + "','1','" + discipline_id + "','" + school_id + "','" + gender + "','" + degree_name + "','" + dateTimePicker1.Text + "')";
+                cmd.ExecuteNonQuery();
+                connection.CloseConnection();
+
+                connection.OpenConection();
+                cmd = connection.CreateCommand();
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = "Select id from info where name = '" + teacherNameTxt.Text + "'";
+                teacher_id = (int)cmd.ExecuteScalar();
+                connection.CloseConnection();
+
+                connection.OpenConection();
+                cmd.CommandText = "insert into [joining] (teacher_id,designation_id,current_designation,joining_date,total_leave,current_leave,active) values ('" + teacher_id + "','" + designation_id + "','1','" + joiningdateTimePicker.Text + "','0','0','0')";
+                cmd.ExecuteNonQuery();
+                connection.CloseConnection();
+            }
 
             int versity_count = 0;
             try
@@ -149,12 +637,11 @@ namespace ThesisProject
                 connection.CloseConnection();
 
             }
-
             connection.OpenConection();
             cmd = connection.CreateCommand();
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = "Select id from info where name = '" + teacherNameTxt.Text + "'";
-            int teacher_id = (int)cmd.ExecuteScalar();
+            teacher_id = (int)cmd.ExecuteScalar();
             connection.CloseConnection();
 
             connection.OpenConection();
@@ -162,10 +649,6 @@ namespace ThesisProject
             cmd.ExecuteNonQuery();
             connection.CloseConnection();
 
-            connection.OpenConection();
-            cmd.CommandText = "insert into [joining] (teacher_id,designation_id,current_designation,joining_date,total_leave,current_leave,active) values ('" + teacher_id + "','" + designation_id + "','"+ designation_id +"','" + joiningdateTimePicker.Text + "','0','0','0')";
-            cmd.ExecuteNonQuery();
-            connection.CloseConnection();
             MessageBox.Show("New Teacher Added");
 
             teacherEntryForm tef = new teacherEntryForm();

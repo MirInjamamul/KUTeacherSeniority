@@ -75,6 +75,8 @@ namespace ThesisProject
 
         private void searchbutton_Click(object sender, EventArgs e)
         {
+            teachercomboBox.Items.Clear();
+
             connection.OpenConection();
             SqlCommand cmd = connection.CreateCommand();
             cmd.CommandType = CommandType.Text;
