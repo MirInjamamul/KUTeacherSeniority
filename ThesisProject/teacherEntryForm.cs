@@ -330,6 +330,7 @@ namespace ThesisProject
 
         private void schoolNameComboBox_SelectedIndexChanged_1(object sender, EventArgs e)
         {
+            disciplineNameComboBox.Items.Clear();
             school_name_form = schoolNameComboBox.Text;
 
             connection.OpenConection();
