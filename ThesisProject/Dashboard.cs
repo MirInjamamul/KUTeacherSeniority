@@ -415,5 +415,11 @@ namespace ThesisProject
             
             dsc.Show();
         }
+
+        private void uPDATEToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            updateFormPassword ufp = new updateFormPassword();
+            ufp.Show();
+        }
     }
 }

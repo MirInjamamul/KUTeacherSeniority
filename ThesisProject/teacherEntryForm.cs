@@ -130,7 +130,7 @@ namespace ThesisProject
             connection.CloseConnection();
 
             connection.OpenConection();
-            cmd.CommandText = "insert into [info] (name,designation,discipline,school,gender,highest_degree,date_of_birth) values ('" + teacherNameTxt.Text + "','" + designation_id + "','" + discipline_id + "','" + school_id + "','" + gender + "','" + degree_name + "','" + dateTimePicker1.Text + "')";
+            cmd.CommandText = "insert into [info] (name,designation,discipline,school,gender,highest_degree,date_of_birth,seniority_date,sindycate_date) values ('" + teacherNameTxt.Text + "','" + designation_id + "','" + discipline_id + "','" + school_id + "','" + gender + "','" + degree_name + "','" + dateTimePicker1.Text + "','" + seniorityDateTimePicker.Text + "','" + syndicateDateTimePicker.Text + "')";
             cmd.ExecuteNonQuery();
             connection.CloseConnection();
 

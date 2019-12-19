@@ -149,6 +149,18 @@
     <Compile Include="teacherPromotionDateForm.Designer.cs">
       <DependentUpon>teacherPromotionDateForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="teacherUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="teacherUpdate.Designer.cs">
+      <DependentUpon>teacherUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="updateFormPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="updateFormPassword.Designer.cs">
+      <DependentUpon>updateFormPassword.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="allTeacherSeniorityForm.resx">
       <DependentUpon>allTeacherSeniorityForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -205,6 +217,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="teacherPromotionDateForm.resx">
       <DependentUpon>teacherPromotionDateForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="teacherUpdate.resx">
+      <DependentUpon>teacherUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="updateFormPassword.resx">
+      <DependentUpon>updateFormPassword.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

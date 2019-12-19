@@ -127,3 +127,5 @@ C:\Users\user\Desktop\KUTeacherSeniority\ThesisProject\obj\Debug\ThesisProject.c
 C:\Users\user\Desktop\KUTeacherSeniority\ThesisProject\obj\Debug\ThesisProject.csproj.CopyComplete
 C:\Users\user\Desktop\KUTeacherSeniority\ThesisProject\obj\Debug\ThesisProject.exe
 C:\Users\user\Desktop\KUTeacherSeniority\ThesisProject\obj\Debug\ThesisProject.pdb
+C:\Users\user\Desktop\KUTeacherSeniority\ThesisProject\obj\Debug\ThesisProject.updateFormPassword.resources
+C:\Users\user\Desktop\KUTeacherSeniority\ThesisProject\obj\Debug\ThesisProject.teacherUpdate.resources
