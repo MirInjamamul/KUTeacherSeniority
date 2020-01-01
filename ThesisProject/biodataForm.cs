@@ -183,28 +183,28 @@ namespace ThesisProject
 
             try
             {
-                connection.OpenConection();
-                cmd = connection.CreateCommand();
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "Select leave_date,join_date From leave where teacher_id = '" + teacher_id + "' AND designation = '" + designation_id + "'";
+                /*       connection.OpenConection();
+                       cmd = connection.CreateCommand();
+                       cmd.CommandType = CommandType.Text;
+                       cmd.CommandText = "Select leave_date,join_date From leave where teacher_id = '" + teacher_id + "' AND designation = '" + designation_id + "'";
 
-                SqlDataReader reader = cmd.ExecuteReader();
+                       SqlDataReader reader = cmd.ExecuteReader();
 
-                textBoxBioLeaveJoin.Text = "";
-                while (reader.Read())
-                {
-                    textBoxBioLeaveJoin.Visible = true;
-                    string leave = (string)reader["leave_date"].ToString();
-                    string join = (string)reader["join_date"].ToString();
+                       textBoxBioLeaveJoin.Text = "";
+                       while (reader.Read())
+                       {
+                           textBoxBioLeaveJoin.Visible = true;
+                           string leave = (string)reader["leave_date"].ToString();
+                           string join = (string)reader["join_date"].ToString();
 
-                    Console.WriteLine("" + join);
+                           Console.WriteLine("" + join);
 
-                    if (join == "")
-                        join = "Not Join Yet";
+                           if (join == "")
+                               join = "Not Join Yet";
 
-                    //textBoxBioLeaveJoin.Text = textBoxBioLeaveJoin.Text + "Leave : " + leave + " Join : " + join +"\n";
-                    
-                }
+                           //textBoxBioLeaveJoin.Text = textBoxBioLeaveJoin.Text + "Leave : " + leave + " Join : " + join +"\n";
+
+                       } */
                 connection.CloseConnection();
             }
             catch (Exception ex)

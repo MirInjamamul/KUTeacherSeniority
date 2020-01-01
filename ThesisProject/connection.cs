@@ -9,7 +9,7 @@ namespace ThesisProject
 {
     class connection
     {
-        SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\user\Desktop\KUTeacherSeniority\database.mdf;Integrated Security=True;Connect Timeout=30");
+        SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=G:\project\thesis\KUTeacherSeniority\ThesisProject\database.mdf;Integrated Security=True;Connect Timeout=30");
 
         public void OpenConection()
         {

@@ -40,6 +40,10 @@
             this.confirmButton2 = new System.Windows.Forms.Button();
             this.designationComboBox = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.SenioritydateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.label7 = new System.Windows.Forms.Label();
+            this.SyndicatedateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // label1
@@ -66,7 +70,7 @@
             // 
             this.schoolComboBox.FormattingEnabled = true;
             this.schoolComboBox.Location = new System.Drawing.Point(189, 46);
-            this.schoolComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.schoolComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.schoolComboBox.Name = "schoolComboBox";
             this.schoolComboBox.Size = new System.Drawing.Size(301, 24);
             this.schoolComboBox.TabIndex = 2;
@@ -76,7 +80,7 @@
             // 
             this.disciplineComboBox.FormattingEnabled = true;
             this.disciplineComboBox.Location = new System.Drawing.Point(189, 78);
-            this.disciplineComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.disciplineComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.disciplineComboBox.Name = "disciplineComboBox";
             this.disciplineComboBox.Size = new System.Drawing.Size(301, 24);
             this.disciplineComboBox.TabIndex = 3;
@@ -85,7 +89,7 @@
             // teacherSearchButton
             // 
             this.teacherSearchButton.Location = new System.Drawing.Point(392, 146);
-            this.teacherSearchButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.teacherSearchButton.Margin = new System.Windows.Forms.Padding(4);
             this.teacherSearchButton.Name = "teacherSearchButton";
             this.teacherSearchButton.Size = new System.Drawing.Size(100, 28);
             this.teacherSearchButton.TabIndex = 4;
@@ -107,7 +111,7 @@
             // 
             this.teacherComboBox.FormattingEnabled = true;
             this.teacherComboBox.Location = new System.Drawing.Point(189, 189);
-            this.teacherComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.teacherComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.teacherComboBox.Name = "teacherComboBox";
             this.teacherComboBox.Size = new System.Drawing.Size(301, 24);
             this.teacherComboBox.TabIndex = 6;
@@ -118,7 +122,7 @@
             this.JoiningdateTimePicker.CustomFormat = "MM/dd/yyyy";
             this.JoiningdateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.JoiningdateTimePicker.Location = new System.Drawing.Point(189, 237);
-            this.JoiningdateTimePicker.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.JoiningdateTimePicker.Margin = new System.Windows.Forms.Padding(4);
             this.JoiningdateTimePicker.Name = "JoiningdateTimePicker";
             this.JoiningdateTimePicker.Size = new System.Drawing.Size(301, 23);
             this.JoiningdateTimePicker.TabIndex = 8;
@@ -129,18 +133,18 @@
             this.label5.Location = new System.Drawing.Point(73, 244);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(102, 16);
+            this.label5.Size = new System.Drawing.Size(93, 16);
             this.label5.TabIndex = 9;
-            this.label5.Text = "Seniority Date";
+            this.label5.Text = "Joining  Date";
             // 
             // confirmButton2
             // 
-            this.confirmButton2.Location = new System.Drawing.Point(392, 280);
-            this.confirmButton2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.confirmButton2.Location = new System.Drawing.Point(392, 353);
+            this.confirmButton2.Margin = new System.Windows.Forms.Padding(4);
             this.confirmButton2.Name = "confirmButton2";
             this.confirmButton2.Size = new System.Drawing.Size(100, 28);
             this.confirmButton2.TabIndex = 10;
-            this.confirmButton2.Text = "Promote";
+            this.confirmButton2.Text = "Upgrade";
             this.confirmButton2.UseVisualStyleBackColor = true;
             this.confirmButton2.Click += new System.EventHandler(this.confirmButton2_Click);
             // 
@@ -148,7 +152,7 @@
             // 
             this.designationComboBox.FormattingEnabled = true;
             this.designationComboBox.Location = new System.Drawing.Point(188, 113);
-            this.designationComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.designationComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.designationComboBox.Name = "designationComboBox";
             this.designationComboBox.Size = new System.Drawing.Size(301, 24);
             this.designationComboBox.TabIndex = 13;
@@ -164,11 +168,55 @@
             this.label4.TabIndex = 12;
             this.label4.Text = "Designation";
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(74, 289);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(102, 16);
+            this.label6.TabIndex = 15;
+            this.label6.Text = "Seniority Date";
+            // 
+            // SenioritydateTimePicker
+            // 
+            this.SenioritydateTimePicker.CustomFormat = "MM/dd/yyyy";
+            this.SenioritydateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.SenioritydateTimePicker.Location = new System.Drawing.Point(190, 282);
+            this.SenioritydateTimePicker.Margin = new System.Windows.Forms.Padding(4);
+            this.SenioritydateTimePicker.Name = "SenioritydateTimePicker";
+            this.SenioritydateTimePicker.Size = new System.Drawing.Size(301, 23);
+            this.SenioritydateTimePicker.TabIndex = 14;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(74, 329);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(110, 16);
+            this.label7.TabIndex = 17;
+            this.label7.Text = "Syndicate Date";
+            // 
+            // SyndicatedateTimePicker
+            // 
+            this.SyndicatedateTimePicker.CustomFormat = "MM/dd/yyyy";
+            this.SyndicatedateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.SyndicatedateTimePicker.Location = new System.Drawing.Point(190, 322);
+            this.SyndicatedateTimePicker.Margin = new System.Windows.Forms.Padding(4);
+            this.SyndicatedateTimePicker.Name = "SyndicatedateTimePicker";
+            this.SyndicatedateTimePicker.Size = new System.Drawing.Size(301, 23);
+            this.SyndicatedateTimePicker.TabIndex = 16;
+            // 
             // teacherPromotionDateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(591, 364);
+            this.ClientSize = new System.Drawing.Size(591, 464);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.SyndicatedateTimePicker);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.SenioritydateTimePicker);
             this.Controls.Add(this.designationComboBox);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.confirmButton2);
@@ -182,7 +230,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "teacherPromotionDateForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Teacher Promotion Form";
@@ -206,5 +254,9 @@
         private System.Windows.Forms.Button confirmButton2;
         private System.Windows.Forms.ComboBox designationComboBox;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.DateTimePicker SenioritydateTimePicker;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.DateTimePicker SyndicatedateTimePicker;
     }
 }

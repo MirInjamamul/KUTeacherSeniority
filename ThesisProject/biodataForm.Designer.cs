@@ -50,10 +50,7 @@
             this.labelBioDisciplineName = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.labelBioHighestDegreeObtainedUniversity = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.textBoxBioLeaveJoin = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // confirmbutton
@@ -246,7 +243,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(17, 311);
+            this.label9.Location = new System.Drawing.Point(394, 249);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(109, 16);
@@ -256,7 +253,7 @@
             // labelBioDisciplineName
             // 
             this.labelBioDisciplineName.AutoSize = true;
-            this.labelBioDisciplineName.Location = new System.Drawing.Point(208, 311);
+            this.labelBioDisciplineName.Location = new System.Drawing.Point(585, 249);
             this.labelBioDisciplineName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelBioDisciplineName.Name = "labelBioDisciplineName";
             this.labelBioDisciplineName.Size = new System.Drawing.Size(54, 16);
@@ -285,17 +282,6 @@
             this.labelBioHighestDegreeObtainedUniversity.Text = "label10";
             this.labelBioHighestDegreeObtainedUniversity.Visible = false;
             // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(17, 349);
-            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(56, 16);
-            this.label11.TabIndex = 35;
-            this.label11.Text = "Leave ";
-            // 
             // label12
             // 
             this.label12.AutoSize = true;
@@ -307,34 +293,12 @@
             this.label12.TabIndex = 36;
             this.label12.Text = "Information";
             // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(17, 379);
-            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(158, 16);
-            this.label13.TabIndex = 37;
-            this.label13.Text = "Leave and Joined Date";
-            // 
-            // textBoxBioLeaveJoin
-            // 
-            this.textBoxBioLeaveJoin.Location = new System.Drawing.Point(211, 376);
-            this.textBoxBioLeaveJoin.Multiline = true;
-            this.textBoxBioLeaveJoin.Name = "textBoxBioLeaveJoin";
-            this.textBoxBioLeaveJoin.Size = new System.Drawing.Size(437, 93);
-            this.textBoxBioLeaveJoin.TabIndex = 38;
-            this.textBoxBioLeaveJoin.Visible = false;
-            // 
             // biodataForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1067, 554);
-            this.Controls.Add(this.textBoxBioLeaveJoin);
-            this.Controls.Add(this.label13);
             this.Controls.Add(this.label12);
-            this.Controls.Add(this.label11);
             this.Controls.Add(this.labelBioHighestDegreeObtainedUniversity);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.labelBioDisciplineName);
@@ -391,9 +355,6 @@
         private System.Windows.Forms.Label labelBioDisciplineName;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label labelBioHighestDegreeObtainedUniversity;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox textBoxBioLeaveJoin;
     }
 }

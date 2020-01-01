@@ -222,7 +222,7 @@ namespace ThesisProject
             connection.CloseConnection();
 
             connection.OpenConection();
-            cmd.CommandText = "insert into [joining] (teacher_id,designation_id,current_designation,joining_date,total_leave,current_leave,active) values ('" + teacher_id + "','" + designation_id + "','1','" + JoiningdateTimePicker.Text + "','0','0','0')";
+            cmd.CommandText = "insert into [joining] (teacher_id,designation_id,current_designation,joining_date,total_leave,current_leave,active,seniority_date,syndicate_date) values ('" + teacher_id + "','" + designation_id + "','1','" + JoiningdateTimePicker.Text + "','0','0','0','"+ SenioritydateTimePicker.Text +"','"+  SyndicatedateTimePicker.Text +"')";
             cmd.ExecuteNonQuery();
             connection.CloseConnection();
             MessageBox.Show("Teacher Promotion Done");
