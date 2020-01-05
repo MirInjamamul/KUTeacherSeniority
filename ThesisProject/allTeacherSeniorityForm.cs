@@ -26,8 +26,10 @@ namespace ThesisProject
         string name = "";
         int[] activeCount = new int[500];
         int[] teacherCount = new int[500];
+        private DateTime[] joiningCount = new DateTime[500];
         int count = 0;
-        int ranking = 1; 
+        int ranking = 1;
+        
         public allTeacherSeniorityForm()
         {
             InitializeComponent();
@@ -41,7 +43,7 @@ namespace ThesisProject
 
             var headerRow = new List<string[]>()
             {
-                new string[] { "Ranking", "Teacher Name","Discipline", "Designation"}
+                new string[] { "Ranking", "Teacher Name","Discipline", "Designation", "Joining Date"}
             };
 
             // Determine the header range (e.g. A1:D1)
@@ -102,7 +104,7 @@ namespace ThesisProject
                         int count = 0;
                         while (reader.Read())
                         {
-                            DateTime seniority = (DateTime)reader["joining_date"];
+                            DateTime seniority = (DateTime) reader["joining_date"];
                             int teacher_id = (int)reader["teacher_id"];
                             int current_leave = (int)reader["current_leave"];
                             int total_leave = (int)reader["total_leave"];
@@ -112,6 +114,7 @@ namespace ThesisProject
 
                             activeCount[count] = active - current_leave - total_leave;
                             teacherCount[count] = teacher_id;
+                            joiningCount[count] = seniority;
                             
                             count++;
                         }
@@ -140,6 +143,7 @@ namespace ThesisProject
                     // traverse
                     int temp;
                     int temp1;
+                    DateTime temp2;
                     for (i = 0; i < val - 1; i++)
                     {
                         // traverse i+1 to array length 
@@ -152,12 +156,15 @@ namespace ThesisProject
 
                                 temp = activeCount[i];
                                 temp1 = teacherCount[i];
+                                temp2 = joiningCount[i];
 
                                 activeCount[i] = activeCount[j];
                                 teacherCount[i] = teacherCount[j];
+                                joiningCount[i] = joiningCount[j];
 
                                 activeCount[j] = temp;
                                 teacherCount[j] = temp1;
+                                joiningCount[j] = temp2;
                             }
                             else if (activeCount[i] == activeCount[j])
                             {
@@ -206,12 +213,15 @@ namespace ThesisProject
                                     {
                                         temp = activeCount[i];
                                         temp1 = teacherCount[i];
+                                        temp2 = joiningCount[i];
 
                                         activeCount[i] = activeCount[j];
                                         teacherCount[i] = teacherCount[j];
+                                        joiningCount[i] = joiningCount[j];
 
                                         activeCount[j] = temp;
                                         teacherCount[j] = temp1;
+                                        joiningCount[j] = temp2;
                                     }
                                 }
                                 catch (Exception ex)
@@ -258,7 +268,7 @@ namespace ThesisProject
                         if (teacherCount[i] != 0 && flag ==1)
                         {
                             
-                            celldata.Add(new string[] { "" + ranking, "" + teacher_name,""+discipline_name, "Lecturer" });
+                            celldata.Add(new string[] { "" + ranking, "" + teacher_name,""+discipline_name, "Lecturer", ""+joiningCount[i]});
                             ranking++;
                         }
 
@@ -370,6 +380,7 @@ namespace ThesisProject
 
                             activeCount[count] = active - current_leave - total_leave;
                             teacherCount[count] = teacher_id;
+                            joiningCount[count] = seniority;
 
                             count++;
                         }
@@ -397,6 +408,7 @@ namespace ThesisProject
                     // traverse
                     int temp;
                     int temp1;
+                    DateTime temp2;
                     for (i = 0; i < val - 1; i++)
                     {
                         // traverse i+1 to array length 
@@ -409,12 +421,15 @@ namespace ThesisProject
 
                                 temp = activeCount[i];
                                 temp1 = teacherCount[i];
+                                temp2 = joiningCount[i];
 
                                 activeCount[i] = activeCount[j];
                                 teacherCount[i] = teacherCount[j];
+                                joiningCount[i] = joiningCount[j];
 
                                 activeCount[j] = temp;
                                 teacherCount[j] = temp1;
+                                joiningCount[j] = temp2;
                             }
                             else if (activeCount[i] == activeCount[j])
                             {
@@ -469,12 +484,15 @@ namespace ThesisProject
                                     {
                                         temp = activeCount[i];
                                         temp1 = teacherCount[i];
+                                        temp2 = joiningCount[i];
 
                                         activeCount[i] = activeCount[j];
                                         teacherCount[i] = teacherCount[j];
+                                        joiningCount[i] = joiningCount[j];
 
                                         activeCount[j] = temp;
                                         teacherCount[j] = temp1;
+                                        joiningCount[j] = temp2;
                                     }
                                 }
                                 catch (Exception ex)
@@ -512,7 +530,7 @@ namespace ThesisProject
                         if (teacherCount[i] != 0 )
                         {
 
-                            celldata.Add(new string[] { "" + ranking, "" + teacher_name, "" + discipline_name, "Assistant Professor" });
+                            celldata.Add(new string[] { "" + ranking, "" + teacher_name, "" + discipline_name, "Assistant Professor",""+joiningCount[i] });
                             ranking++;
                         }
 
@@ -614,6 +632,7 @@ namespace ThesisProject
 
                             activeCount[count] = active - current_leave - total_leave;
                             teacherCount[count] = teacher_id;
+                            joiningCount[count] = seniority;
                             System.Console.WriteLine("name : " + name + " Active : " + active + "teacher_id" + teacherCount[count]);
 
                             count++;
@@ -642,6 +661,8 @@ namespace ThesisProject
                     // traverse
                     int temp;
                     int temp1;
+                    DateTime temp2;
+
                     for (i = 0; i < val - 1; i++)
                     {
                         // traverse i+1 to array length 
@@ -654,12 +675,15 @@ namespace ThesisProject
 
                                 temp = activeCount[i];
                                 temp1 = teacherCount[i];
+                                temp2 = joiningCount[i];
 
                                 activeCount[i] = activeCount[j];
                                 teacherCount[i] = teacherCount[j];
+                                joiningCount[i] = joiningCount[j];
 
                                 activeCount[j] = temp;
                                 teacherCount[j] = temp1;
+                                joiningCount[j] = temp2;
                             }
                             else if (activeCount[i] == activeCount[j])
                             {
@@ -715,12 +739,15 @@ namespace ThesisProject
                                     {
                                         temp = activeCount[i];
                                         temp1 = teacherCount[i];
+                                        temp2 = joiningCount[i];
 
                                         activeCount[i] = activeCount[j];
                                         teacherCount[i] = teacherCount[j];
+                                        joiningCount[i] = joiningCount[j];
 
                                         activeCount[j] = temp;
                                         teacherCount[j] = temp1;
+                                        joiningCount[j] = temp2;
                                     }
                                 }
                                 catch (Exception ex)
@@ -759,7 +786,7 @@ namespace ThesisProject
                         if (teacherCount[i] != 0)
                         {
 
-                            celldata.Add(new string[] { "" + ranking, "" + teacher_name, "" + discipline_name, "Associate Professor" });
+                            celldata.Add(new string[] { "" + ranking, "" + teacher_name, "" + discipline_name, "Associate Professor",""+joiningCount[i] });
                             ranking++;
                         }
                         cmd.CommandText = "Insert into ranking(id,teacher_id,count) values ('" + j + "', '" + teacherCount[i] + "' , '" + activeCount[i] + "')";
@@ -855,12 +882,14 @@ namespace ThesisProject
                             int teacher_id = (int)reader["teacher_id"];
                             int current_leave = (int)reader["current_leave"];
                             int total_leave = (int)reader["total_leave"];
+                            
 
                             DateTime now = DateTime.Now;
                             int active = ((TimeSpan)(now - seniority)).Days;
 
                             activeCount[count] = active - current_leave - total_leave;
                             teacherCount[count] = teacher_id;
+                            joiningCount[count] = seniority;
                             System.Console.WriteLine("name : " + name + " Active : " + active + "teacher_id" + teacherCount[count]);
 
                             count++;
@@ -890,6 +919,7 @@ namespace ThesisProject
                     // traverse
                     int temp;
                     int temp1;
+                    DateTime temp2;
                     for (i = 0; i < val - 1; i++)
                     {
                         // traverse i+1 to array length 
@@ -902,12 +932,15 @@ namespace ThesisProject
 
                                 temp = activeCount[i];
                                 temp1 = teacherCount[i];
+                                temp2 = joiningCount[i];
 
                                 activeCount[i] = activeCount[j];
                                 teacherCount[i] = teacherCount[j];
+                                joiningCount[i] = joiningCount[j];
 
                                 activeCount[j] = temp;
                                 teacherCount[j] = temp1;
+                                joiningCount[j] = temp2;
                             }
                             else if (activeCount[i] == activeCount[j])
                             {
@@ -961,12 +994,15 @@ namespace ThesisProject
                                     {
                                         temp = activeCount[i];
                                         temp1 = teacherCount[i];
+                                        temp2 = joiningCount[i];
 
                                         activeCount[i] = activeCount[j];
                                         teacherCount[i] = teacherCount[j];
+                                        joiningCount[i] = joiningCount[j];
 
                                         activeCount[j] = temp;
                                         teacherCount[j] = temp1;
+                                        joiningCount[j] = temp2;
                                     }
                                 }
                                 catch (Exception ex)
@@ -1002,7 +1038,7 @@ namespace ThesisProject
                         if (teacherCount[i] != 0 )
                         {
 
-                            celldata.Add(new string[] { "" + ranking, "" + teacher_name, "" + discipline_name, "Professor (Grade 3)" });
+                            celldata.Add(new string[] { "" + ranking, "" + teacher_name, "" + discipline_name, "Professor (Grade 3)",""+joiningCount[i] });
                             ranking++;
                         }
                         cmd.CommandText = "Insert into ranking(id,teacher_id,count) values ('" + j + "', '" + teacherCount[i] + "' , '" + activeCount[i] + "')";
@@ -1104,6 +1140,7 @@ namespace ThesisProject
 
                             activeCount[count] = active - current_leave - total_leave;
                             teacherCount[count] = teacher_id;
+                            joiningCount[count] = seniority;
 
                             count++;
                         }
@@ -1133,6 +1170,7 @@ namespace ThesisProject
                     // traverse
                     int temp;
                     int temp1;
+                    DateTime temp2;
                     for (i = 0; i < val - 1; i++)
                     {
                         // traverse i+1 to array length 
@@ -1145,12 +1183,15 @@ namespace ThesisProject
 
                                 temp = activeCount[i];
                                 temp1 = teacherCount[i];
+                                temp2 = joiningCount[i];
 
                                 activeCount[i] = activeCount[j];
                                 teacherCount[i] = teacherCount[j];
+                                joiningCount[i] = joiningCount[j];
 
                                 activeCount[j] = temp;
                                 teacherCount[j] = temp1;
+                                joiningCount[j] = temp2;
                             }
                             else if (activeCount[i] == activeCount[j])
                             {
@@ -1205,12 +1246,15 @@ namespace ThesisProject
                                     {
                                         temp = activeCount[i];
                                         temp1 = teacherCount[i];
+                                        temp2 = joiningCount[i];
 
                                         activeCount[i] = activeCount[j];
                                         teacherCount[i] = teacherCount[j];
+                                        joiningCount[i] = joiningCount[j];
 
                                         activeCount[j] = temp;
                                         teacherCount[j] = temp1;
+                                        joiningCount[j] = temp2;
                                     }
                                 }
                                 catch (Exception ex)
@@ -1248,7 +1292,7 @@ namespace ThesisProject
                         if (teacherCount[i] != 0)
                         {
 
-                            celldata.Add(new string[] { "" + ranking, "" + teacher_name, "" + discipline_name, "Professor (Grade 2)" });
+                            celldata.Add(new string[] { "" + ranking, "" + teacher_name, "" + discipline_name, "Professor (Grade 2)",""+joiningCount[i] });
                             ranking++;
                         }
                         cmd.CommandText = "Insert into ranking(id,teacher_id,count) values ('" + j + "', '" + teacherCount[i] + "' , '" + activeCount[i] + "')";
@@ -1348,6 +1392,7 @@ namespace ThesisProject
 
                             activeCount[count] = active - current_leave - total_leave;
                             teacherCount[count] = teacher_id;
+                            joiningCount[count] = seniority;
                             
                             count++;
                         }
@@ -1378,6 +1423,7 @@ namespace ThesisProject
                     // traverse
                     int temp;
                     int temp1;
+                    DateTime temp2;
                     for (i = 0; i <  val - 1; i++)
                     {
                         // traverse i+1 to array length 
@@ -1390,12 +1436,15 @@ namespace ThesisProject
 
                                 temp = activeCount[i];
                                 temp1 = teacherCount[i];
+                                temp2 = joiningCount[i];
 
                                 activeCount[i] = activeCount[j];
                                 teacherCount[i] = teacherCount[j];
+                                joiningCount[i] = joiningCount[j];
 
                                 activeCount[j] = temp;
                                 teacherCount[j] = temp1;
+                                joiningCount[j] = temp2;
                             }
                             else if (activeCount[i] == activeCount[j])
                             {
@@ -1445,12 +1494,15 @@ namespace ThesisProject
                                     {
                                         temp = activeCount[i];
                                         temp1 = teacherCount[i];
+                                        temp2 = joiningCount[i];
 
                                         activeCount[i] = activeCount[j];
                                         teacherCount[i] = teacherCount[j];
+                                        joiningCount[i] = joiningCount[j];
 
                                         activeCount[j] = temp;
                                         teacherCount[j] = temp1;
+                                        joiningCount[j] = temp2;
                                     }
                                 }
                                 catch (Exception ex)
@@ -1487,7 +1539,7 @@ namespace ThesisProject
                        
                         if (teacherCount[i] != 0)
                         {
-                            celldata.Add(new string[] { "" + ranking, "" + teacher_name, "" + discipline_name, "Professor (Grade 1)" });
+                            celldata.Add(new string[] { "" + ranking, "" + teacher_name, "" + discipline_name, "Professor (Grade 1)",""+joiningCount[i] });
                             ranking++;
                         }
 
